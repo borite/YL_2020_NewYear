@@ -1,0 +1,241 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no,inital-scale=1"/>
+<title>点爆竹</title>
+	<link href="css/lsj.css" rel="stylesheet"/>
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="js/lsj.js"></script>
+	<script type="text/javascript" src="js/raward.js"></script>
+	<style>
+		/*爆竹动画*/
+		.Bo{animation: actBo 1.5s linear;
+			animation-fill-mode : forwards;}
+		@keyframes actBo{
+			0%{top:-29%;}
+			100%{top:80%;}
+		}
+		/*轨道边框*/
+		.lbor_1 {
+			border-right: 10px #d4b100 solid;
+			border-left: 10px #d4b100 solid;
+		}
+	</style>
+</head>
+
+<body class="lbg_co_1">
+	<audio src="audio/bgm.mp3" id="vice" autoplay></audio>
+	<audio id="au" src=""></audio>
+	<!--返回按钮+计时器-->
+	<header class="lbg_co_4 lw100 ldis_fle lpos_fix l10" style="height: 10%;justify-content: space-between;padding: 3% 0;">
+		<!--返回按键-->
+		<a href="index.html" class="ldis_blo lbg_co_2 ltex_cen lpos_rel" style="width: 18%;height: 78%;border: 6px #bdae9a solid; border-radius: 6px;margin-left: 3%;">
+			<img src="img/back.png" class="ldis_blo lpos_abs" style="right: 50%;top: 50%;margin-right: -20px;margin-top: -16px;" alt="返回" width="40px" height="32px"/>
+		</a>
+		<div class="lfont_1 lco_1 lh100 lpos_rel" style="width: 34%;text-align: center;line-height: 100%;font-size: 36px;">
+			<b id="nubShow" class="ldis_blo lpos_abs" style="right: 50%;bottom: 10%;margin-right: -30px;width: 60px;height: 36px;">0/15</b>
+		</div>
+		<div class="lfont_1 lco_1 lh100 lpos_rel" style="width: 34%;text-align: center;margin-right: 3%;line-height: 100%;font-size: 60px;">
+			<b id="timeShow" class="ldis_blo lpos_abs" style="right: 50%;top: 50%;margin-right: -60px;margin-top: -30px;width: 120px;height: 60px;">30S</b>
+		</div>
+	</header>
+	<!--游戏组件-->
+	<section id="track" class="ldis_fle lw100 lh100" style="justify-content: space-between;margin: 0 auto;">
+		
+		<!--轨道一-->
+		<div id="track1" class="lpos_rel lbor_1 lw100 ">
+			<img src="img/DBZ_img/bg1.png" class="ldis_blo lpos_abs" style="right: 50%;top: 50%;margin-right: -37px;margin-top: -200px;" alt="返回" width="70px" height="380px"/>
+		</div>
+		
+		<!--轨道二-->
+		<div id="track2" class="lpos_rel lbor_1 lw100 ">
+			<img src="img/DBZ_img/bg2.png" class="ldis_blo lpos_abs" style="right: 50%;top: 50%;margin-right: -37px;margin-top: -200px;" alt="返回" width="70px" height="380px"/>
+		</div>
+		
+		<!--轨道三-->
+		<div id="track3" class="lpos_rel lbor_1 lw100 ">
+			<img src="img/DBZ_img/bg3.png" class="ldis_blo lpos_abs" style="right: 50%;top: 50%;margin-right: -37px;margin-top: -200px;" alt="返回" width="70px" height="380px"/>
+		</div>
+		
+	</section>
+	
+	<!--按钮-->
+	<footer class="lpos_fix lw100 ldis_fle l9" style="bottom: 0px;justify-content: space-around; height: 20%;">
+		
+		<!--左-->
+		<div id="LBut" class="ldis_blo lbg_co_2 ltex_cen lpos_rel" style="width: 50%;border: 10px #bdae9a solid;">
+			<img src="img/DBZ_img/Bo.png" class="ldis_blo lpos_abs" style="right: 50%;top: 50%;margin-right: -24px;margin-top: -42px;" alt="返回" height="84px" width="48px;"/>
+		</div>
+		
+		<!--中-->
+		<div id="MBut" class="ldis_blo lbg_co_2 ltex_cen lpos_rel" style="width: 50%;border: 10px #bdae9a solid;">
+			<img src="img/DBZ_img/Bo.png" class="ldis_blo lpos_abs" style="right: 50%;top: 50%;margin-right: -24px;margin-top: -42px;" alt="返回" height="84px" width="48px;"/>
+		</div>
+		
+		<!--右-->
+		<div id="RBut" class="ldis_blo lbg_co_2 ltex_cen lpos_rel" style="width: 50%;border: 10px #bdae9a solid;">
+			<img src="img/DBZ_img/Bo.png" class="ldis_blo lpos_abs" style="right: 50%;top: 50%;margin-right: -24px;margin-top: -42px;" alt="返回" height="84px" width="48px;"/>
+		</div>
+		
+	</footer>
+	
+		<!--游戏开始弹窗-->
+	<div id="start" class="lpos_fix l10 lw100 lh100" style="top: 0px;left: 0px;">
+		<div class="lw100 lh100 lpos_fix lbg_co_black" style="opacity: 0.5"></div>
+		
+		<div class="lpos_fix lw100 ltex_cen" style="top: 6%;line-height: 60px;">
+			<img src="img/goodluck.png" alt="好运社" width="30%"/>
+			<br/>
+			<img src="img/DBZ_img/title.png" alt="" width="40%"/>
+			<br/>
+			<img src="img/DBZ_img/text.png" alt="" width="70%"/>
+			<br/>
+			<img onClick="start()" src="img/start.png" alt="开始游戏" width="50%"/>
+		</div>
+	</div>
+	
+	<!--游戏结束弹窗-->
+	<div id="end" class="lpos_fix l10 lw100 lh100 ldis_non">
+		
+	</div>
+	
+	<script type="text/javascript">
+		//生成爆竹
+		var creaBoTimer='';
+		function start(){
+			$("#start").css({"display":"none"});
+			timer()
+			creaBoTimer=setInterval(function(){ creaBo() },1500)
+		}
+		$(function addListener(){//安装触摸监听
+			var el1=document.getElementById("LBut");
+			var el2=document.getElementById("MBut");
+			var el3=document.getElementById("RBut");
+			el1.addEventListener("touchstart",handleStart1,false);
+			el2.addEventListener("touchstart",handleStart2,false);
+			el3.addEventListener("touchstart",handleStart3,false);
+		})
+		//初始变量
+		var nub1=0;//左爆竹个数
+		var nub2=0;//中间爆竹个数
+		var nub3=0;//右爆竹个数
+		var suc=0//成功次数
+		var time=29;
+		var timeOpen=true;
+		
+		
+		//引爆左边的炸药
+		function handleStart1(evt){
+			evt.preventDefault();//去除滑动默认
+			var j=nub1-1
+			if(nub1==0){
+				au(1);
+			}else{
+				au(0);
+				$('#track1>p:eq('+j+')').html('<img class="BoStyle" src="img/DBZ_img/Bo_after.png" width="100%" alt=""/>')
+				setTimeout('$("#track1>p:eq('+j+')").fadeOut("slow");',800)//去除点中音符;
+				suc++;
+				$('#nubShow').text(suc+'/15');
+				if(suc==15){
+					clearInterval(creaBoTimer);
+					timeOpen=false;
+				   		setTimeout('selRaw(true);',1000)
+				   }
+			}
+		}
+		
+		//引爆中间的炸药
+		function handleStart2(evt){
+			evt.preventDefault();//去除滑动默认
+			var j=nub2-1
+			if(nub2==0){
+				au(1);
+			}else{
+				au(0);
+				$('#track2>p:eq('+j+')').html('<img class="BoStyle" src="img/DBZ_img/Bo_after.png" width="100%" alt=""/>')
+				setTimeout('$("#track2>p:eq('+j+')").fadeOut("slow");',800)//去除点中音符;
+				suc++;
+				$('#nubShow').text(suc+'/15');
+				if(suc==15){
+					clearInterval(creaBoTimer);
+					timeOpen=false;
+				   		setTimeout('selRaw(true);',1000)
+				   }
+			}
+		}
+		
+		//引爆右边的炸药
+		function handleStart3(evt){
+			evt.preventDefault();//去除滑动默认
+			var j=nub3-1
+			if(nub3==0){
+				au(1);
+			}else{
+				au(0);
+				$('#track3>p:eq('+j+')').html('<img class="BoStyle" src="img/DBZ_img/Bo_after.png" width="100%" alt=""/>')
+				setTimeout('$("#track3>p:eq('+j+')").fadeOut("slow");',800)//去除点中音符;
+				suc++;
+				$('#nubShow').text(suc+'/15');
+				if(suc==15){
+					clearInterval(creaBoTimer);
+					timeOpen=false;
+				   		setTimeout('selRaw(true);',1000)
+				   }
+			}
+		}
+		//为单行增加爆竹
+		function BoShow(tr){
+			$("#track"+tr).append('<p class="Bo lpos_abs l2 ltex_cen lw100 ltex_cen"><img class="BoStyle" src="img/DBZ_img/Bo.png" width="60%" alt=""/></p>');
+			switch(tr){
+				case 1:
+				nub1++;
+				break;
+				case 2:
+				nub2++;
+				break;
+				case 3:
+				nub3++;
+				break;
+				   }
+		}
+		//随机出现样式
+		function creaBo(){
+			var j="";
+			var chess=[1,2,3,4,5,6];
+			var ra=Math.random();
+			j=Math.floor(ra*chess.length);
+			i=j+1;
+			switch(j){
+				case 0://一串5个
+					BoShow(1)
+				break;
+				case 1://一串4个
+					BoShow(2)
+				break;
+				case 2://一串3个
+					BoShow(3)
+				break;
+				case 3://一串5个
+					BoShow(1)
+					BoShow(3)
+				break;
+				case 4://一串5个
+					BoShow(1)
+					BoShow(2)
+				break;
+				case 5://一串5个
+					BoShow(2)
+					BoShow(3)
+				break;
+			}
+		}
+		
+		function timeOut(){
+			if(time==-1){selRaw(false);}
+		}
+
+		
+	</script>
+</body>
+</html>

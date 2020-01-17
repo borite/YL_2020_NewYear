@@ -1,0 +1,110 @@
+/* CSS Document */
+/*/////////////////////////////////////////////////////////////////*/
+/*/////////////////////////////////////////////////////////////////*/
+/*//////////////////---老司机LaoSiJi(0.0.1)---//////////////////////*/
+/*/////////////////////////////////////////////////////////////////*/
+/*/////////////////////////////////////////////////////////////////*/
+html,body{width: 100%;height: 100%;overflow: hidden;}
+body{position: fixed;}
+*{padding: 0px;margin: 0px;}
+/*清除浮动*/
+.clearfloat{
+       Clear:both;
+       Height:0px;
+       Overflow:hidden;
+       Display:block;
+}
+.clearfix:after{ 
+		content:"";
+		display:block;
+        clear:both;
+        height:0px;
+        visibility:hidden;
+}
+/*BG-img*/
+.lbg_img {background-position: center;background-repeat: no-repeat;background-size: cover;}
+/*position*/
+.lpos_rel{position: relative;}
+.lpos_abs{position: absolute;}
+.lpos_fix{position: fixed;}
+/*font*/
+.lfont12{font-size: 12px;}
+.lfont14{font-size: 14px;}
+.lfont16{font-size: 16px;}
+.lfont18{font-size: 18px;}
+.lfont20{font-size: 20px;}
+.lfont22{font-size: 22px;}
+.lfont24{font-size: 24px;}
+.lfont26{font-size: 26px;}
+.lfont28{font-size: 28px;}
+.lfont30{font-size: 30px;}
+.lfont32{font-size: 32px;}
+.lfont34{font-size: 34px;}
+.lfont42{font-size: 42px;}
+/*display*/
+.ldis_blo {display: block}
+.ldis_non{display: none;}
+.ldis_fle{display: flex;}
+/*text*/
+.ltex_dec {text-decoration:none;}
+.ltex_cen {text-align: center;}
+/*color*/
+.lco_black{color: black;}
+.lco_white{color: white;}
+.lco_1{color: #e8cf34;}
+.lco_2{color: #ccc;}
+.lco_3{color: #ccc;}
+.lbg_co_black{background-color:black;}
+.lbg_co_white{background-color:white;}
+.lbg_co_1{background-color:#e8cf34;}
+.lbg_co_2{background-color:#e6d8c0;}
+.lbg_co_3{background-color:#C62E24;}
+.lbg_co_4{background-color:rgba(0,0,0,0.3);}
+.lbg_co_5{background-color:#E9DAC1;}
+.lbg_co_6{background-color:#BFB09B;}
+.lbg_co_7{background-color:rgba(0,0,0,0.5);}
+
+/*margin auto*/
+.lmar_cer{margin: 0px auto;}
+/*width,height*/
+.lw100{width: 100%;}
+.lh100{height:100%}
+/*z-index*/
+.l1{z-index: 1;}
+.l2{z-index: 2;}
+.l3{z-index: 3;}
+.l4{z-index: 4;}
+.l5{z-index: 5;}
+.l6{z-index: 6;}
+.l7{z-index: 7;}
+.l8{z-index: 8;}
+.l9{z-index: 9;}
+.l10{z-index: 10;}
+/*其他*/
+.love_hid{overflow: hidden;}
+.lcur_poi{cursor: pointer;}
+/*字体*/
+.lfont_1{
+	
+	-webkit-text-stroke: 3px black;/*描边的像素，也就是粗细，这里指定是2像素的黑色边框*/
+}
+.lfont_2{
+	-webkit-text-stroke: 0.3px black;/*描边的像素，也就是粗细，这里指定是2像素的黑色边框*/
+}
+@font-face{
+	font-family: 'FristFont';
+	src: url('font/W9.TTF');
+}
+
+/*安卓适配*/
+		@media screen and (max-width: 360px) {
+			#win{width: 98%;left: 50%;margin-left: -174px;}
+}
+/*iphone5SE适配*/
+		@media screen and (max-width: 320px) {
+		
+			#win{width: 96%;left: 50%;margin-left: -152px;}
+		}
+
+
+

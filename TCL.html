@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+	 <meta name="viewport" content="width=device-width, target-densitydpi=device-dpi, initial-scale=1.0, user-scalable=no">
+<title>贴对联</title>
+	<link href="css/lsj.css" rel="stylesheet"/>
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="js/lsj.js"></script>
+	<script type="text/javascript" src="js/darg.js"></script>
+	<script type="text/javascript" src="js/raward.js"></script>
+	<style>
+		.box1,.box2,.box3,.box4,.box5{
+			border: 3px black dashed;
+		}
+		.box1,.box2{
+			width:30px;height: 140px;top:40%;
+		}
+	
+	</style>
+</head>
+
+<body class="lbg_img" style="background-image: url(img/GDL_img/Bg.png)">
+	<audio src="audio/bgm.mp3" id="vice" autoplay></audio>
+	<audio id="au" src=""></audio>
+	<!--返回按钮+计时器-->
+	<header class="lbg_co_4 lw100 ldis_fle lpos_fix l10" style="height: 10%;justify-content: space-between;padding: 3% 0;">
+		<!--返回按键-->
+		<a href="index.html" class="ldis_blo lbg_co_2 ltex_cen lpos_rel" style="width: 18%;height: 78%;border: 6px #bdae9a solid; border-radius: 6px;margin-left: 3%;">
+			<img src="img/back.png" class="ldis_blo lpos_abs" style="right: 50%;top: 50%;margin-right: -20px;margin-top: -16px;" alt="返回" width="40px" height="32px"/>
+		</a>
+		<div class="lfont_1 lco_1 lh100 lpos_rel" style="width: 34%;text-align: center;margin-right: 3%;line-height: 100%;font-size: 60px;">
+			<b id="timeShow" class="ldis_blo lpos_abs" style="right: 50%;top: 50%;margin-right: -60px;margin-top: -30px;width: 120px;height: 60px;">0S</b>
+		</div>
+	</header>
+	<!--游戏组件-->
+	<div class="lpos_fix lbg_co_5 lw100" style="height: 50%;bottom: 0px;"></div>
+	<div class="lpos_fix lw100 lbg_img" style="height: 50%;top: 24%;background-image: url(img/TDL_img/bg_1.png);"></div>
+	<div class="content">
+        <div class="left">
+            <div class="box1 lpos_fix" style="left: 20%;"></div>
+            <div class="box2 lpos_fix" style="right: 20%;"></div>
+            <div class="box3 lpos_fix" style="top:40%;width:100px;left: 50%;margin-left: -50px; height: 30px;"></div>
+            <div class="box4 lpos_fix" style="top: 50%;width: 50px;height: 50px;left: 50%;margin-left: -66px;"></div>
+            <div class="box5 lpos_fix" style="top: 50%;width: 50px;height: 50px;right: 50%;margin-right: -66px;"></div>
+        </div>
+        <div class="list">
+            <div>
+                <em class="drag1 lpos_fix" data-num="01"><img src="img/TDL_img/left.png" alt=""/></em>
+                <em class="drag2 lpos_fix" data-num="02"><img src="img/TDL_img/right.png" alt=""/></em>
+                <em class="drag3 lpos_fix" data-num="03"><img src="img/TDL_img/top.png" alt=""/></em>
+                <em class="drag4 lpos_fix" data-num="04"><img src="img/TDL_img/fu.png" alt=""/></em>
+                <em class="drag5 lpos_fix" data-num="04"><img src="img/TDL_img/fu.png" alt=""/></em>
+            </div>
+        </div>
+    </div>
+	
+		<!--游戏开始弹窗-->
+	<div id="start" class="lpos_fix l10 lw100 lh100" style="top: 0px;left: 0px;">
+		<div class="lw100 lh100 lpos_fix lbg_co_black" style="opacity: 0.5"></div>
+		
+		<div class="lpos_fix lw100 ltex_cen" style="top: 6%;line-height: 60px;">
+			<img src="img/goodluck.png" alt="好运社" width="30%"/>
+			<br/>
+			<img src="img/TDL_img/title.png" alt="" width="40%"/>
+			<br/>
+			<img src="img/TDL_img/text.png" alt="" width="70%"/>
+			<br/>
+			<img onClick="start()" src="img/start.png" alt="开始游戏" width="50%"/>
+		</div>
+	</div>
+	
+	<!--游戏结束弹窗-->
+	<div id="end" class="lpos_fix l10 lw100 lh100 ldis_non">
+		
+	</div>
+
+	<script>
+		function start(){
+			$("#start").css({"display":"none"});
+			timer()
+			creaBoTimer=setInterval(function(){ creaBo() },2000)
+		}
+		document.body.addEventListener('touchmove', function(e) {
+    		e.preventDefault();
+    	});
+        var drag = new Drag({dragEle: '.drag', tarEle: '.box', 
+                            onStart: function(e) {
+                                e.innerHTML = "我被抓到了";
+                            },
+                            onMove: function(e) {
+                                e.innerHTML = "我在移动";
+                                // console.log('move');
+                            }, 
+                            onMoveIn: function(e) {
+                                e.style.cssText = "opacity: 1;"
+                            }, 
+                            onEnd: function(e) {
+                                e.innerHTML = "我已移入目标区域";
+                                e.style.cssText += "display: none;"
+                            },                
+                        });
+	</script>
+</body>
+</html>

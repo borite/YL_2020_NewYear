@@ -1,0 +1,200 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,user-scalable=no,inital-scale=1"/>
+<title>挂灯笼</title>
+	<link href="css/lsj.css" rel="stylesheet"/>
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="js/lsj.js"></script>
+	<script type="text/javascript" src="js/raward.js"></script>
+	<style type="text/css">
+		#deng1,#deng2{transform-origin: top;}
+		#deng1{animation: actDeng1 5s alternate;
+				animation-iteration-count:3;}
+		@keyframes actDeng1{
+			0%{transform: rotate(2.5deg)}
+			25%{transform: rotate(-7.5deg)}
+			50%{transform: rotate(5deg)}
+			75%{transform: rotate(-2.5deg)}
+			100%{transform: rotate(7.5deg)}
+		}
+		#deng2{animation: actDeng2 5s alternate;
+				animation-iteration-count:3;}
+		@keyframes actDeng2{
+			0%{transform: rotate(7.5deg)}
+			25%{transform: rotate(-2.5deg)}
+			50%{transform: rotate(5deg)}
+			75%{transform: rotate(-7.5deg)}
+			100%{transform: rotate(2.5deg)}
+		}
+	</style>
+</head>
+
+<body class="lbg_img" style="background-image: url(img/GDL_img/Bg.png)">
+	<audio src="audio/bgm.mp3" id="vice" autoplay></audio>
+	<audio id="au" src=""></audio>
+	<!--返回按钮-->
+	<header class="lbg_co_4 lw100 ldis_fle lpos_fix l10" style="height: 10%;justify-content: space-between;padding: 3% 0;">
+		<!--返回按键-->
+		<!--返回按键-->
+		<a href="index.html" class="ldis_blo lbg_co_2 ltex_cen lpos_rel" style="width: 18%;height: 78%;border: 6px #bdae9a solid; border-radius: 6px;margin-left: 3%;">
+			<img src="img/back.png" class="ldis_blo lpos_abs" style="right: 50%;top: 50%;margin-right: -20px;margin-top: -16px;" alt="返回" width="40px" height="32px"/>
+		</a>
+		<div class="lfont_1 lco_1 lh100 lpos_rel" style="width: 34%;text-align: center;margin-right: 3%;line-height: 100%;font-size: 60px;">
+			<b id="timeShow" class="ldis_blo lpos_abs" style="right: 50%;top: 50%;margin-right: -60px;margin-top: -30px;width: 120px;height: 60px;">20S</b>
+		</div>
+	</header>
+	
+	<!--游戏组件-->
+	<section id="track" class="ldis_fle lbg_img lw100" style="justify-content: space-between;margin: 0 auto;height: 78%;">
+		
+		<!--轨道一-->
+		<div id="track1" class="lh100 lpos_rel" style="width:100%; flex-direction: row;">
+			<div class="lpos_abs lw100" style="top: 14%;height: 90%;left: 0;">
+				<img src="img/GDL_img/wallBgR.png" height="100%" alt=""/>
+			</div>
+			<div class="lpos_abs lw100" style="top: 34%;height: 66%;left: 48%;">
+				<img src="img/GDL_img/emptyL.png" height="100%" alt=""/>
+			</div>
+			<div id="deng1" class="lpos_abs lw100" style="top: 104%;height: 66%;left: 48%;">
+				<img src="img/GDL_img/chuan_1.png" height="100%" alt=""/>
+			</div>
+			
+		</div>
+		
+		
+		<!--轨道二-->
+		<div id="track2" class="lh100 lpos_rel" style="width:100%; flex-direction: row;">
+			<div class="lpos_abs lw100" style="top: 14%;height: 90%;right: 0;text-align: right">
+				<img src="img/GDL_img/wallBgL.png" height="100%" alt=""/>
+			</div>
+			<div class="lpos_abs lw100" style="top: 34%;height: 66%;right: 48%;text-align: right">
+				<img src="img/GDL_img/emptyR.png" height="100%" alt=""/>
+			</div>
+			<div id="deng2" class="lpos_abs lw100" style="top: 104%;height: 66%;right: 48%;text-align: right">
+				<img src="img/GDL_img/chuan_2.png" height="100%" alt=""/>
+			</div>
+		</div>
+		
+	</section>
+	
+	<!--按钮-->
+	<footer class="lpos_fix lw100 ldis_fle l9" style="bottom: 0px;justify-content: space-around; height: 20%;">
+		
+		<!--左-->
+		<div id="LBut" class="ldis_blo lbg_co_2 ltex_cen lpos_rel" style="width: 50%;border: 10px #bdae9a solid;">
+			<img src="img/GDL_img/style_1.png" class="ldis_blo lpos_abs" style="right: 50%;top: 50%;margin-right: -33px;margin-top: -43px;" alt="返回" height="86px" width="66px;"/>
+		</div>
+		
+		<!--右-->
+		<div id="RBut" class="ldis_blo lbg_co_2 ltex_cen lpos_rel" style="width: 50%;border: 10px #bdae9a solid;">
+			<img src="img/GDL_img/style_2.png" class="ldis_blo lpos_abs" style="right: 50%;top: 50%;margin-right: -33px;margin-top: -43px;" alt="返回" height="86px" width="66px;"/>
+		</div>
+		
+	</footer>
+	
+		<!--游戏开始弹窗-->
+	<div id="start" class="lpos_fix l10 lw100 lh100" style="top: 0px;left: 0px;">
+		<div class="lw100 lh100 lpos_fix lbg_co_black" style="opacity: 0.5"></div>
+		
+		<div class="lpos_fix lw100 ltex_cen" style="top: 6%;line-height: 60px;">
+			<img src="img/goodluck.png" alt="好运社" width="30%"/>
+			<br/>
+			<img src="img/GDL_img/title.png" alt="" width="40%"/>
+			<br/>
+			<img src="img/GDL_img/text.png" alt="" width="70%"/>
+			<br/>
+			<img onClick="start()" src="img/start.png" alt="开始游戏" width="50%"/>
+		</div>
+	</div>
+		
+	<!--游戏结束弹窗-->
+	<div id="end" class="lpos_fix l10 lw100 lh100 ldis_non">
+		
+	</div>
+	
+	<script type="text/javascript">
+		function start(){
+			$("#start").css({"display":"none"});
+			timer()
+			
+		}
+		$(function addListener(){//安装触摸监听
+			var el1=document.getElementById("LBut");
+			var el2=document.getElementById("RBut");
+			el1.addEventListener("touchstart",handleStart1,false);
+			el2.addEventListener("touchstart",handleStart2,false);
+		})
+		//初始变量
+		var L=70;//左点击次数
+		var R=70;//右点击次数
+		var sucL=false;//成功次数
+		var sucR=false;//成功次数
+		var time=19;
+		var timeOpen=true;
+		var posL=0;//过去捕获
+		var posR=0;//过去捕获
+		//灯笼位置捕获
+		
+		var buL=setInterval(function(){ if(posL>L){posL=L;}else{drop(1)} },1000)
+		var buR=setInterval(function(){ if(posR>R){posR=R;}else{drop(2)} },1000)
+		//掉落
+		function drop(tr){
+			if(tr==1){
+			   	L++;
+				if(L>70){L=70};
+				$('#deng1').animate({top:34+L+'%'},100);
+				//console.log("增加后"+L);
+			}else{
+				R++;
+				if(R>70){R=70};
+				$('#deng2').animate({top:34+R+'%'},100);
+				//console.log("增加后"+R);
+			}
+		}
+		//挂左侧灯笼
+		function handleStart1(evt){
+			evt.preventDefault();//去除滑动默认
+			if(L>0){
+				L-=2;
+				$('#deng1').animate({top:34+L+'%'},100);
+				//console.log("减少后"+L);
+			}else{
+				au(2);
+				sucL=true;//成功次数
+				clearInterval(buL);
+				if(sucL==true && sucR==true){
+					timeOpen=false;
+					selRaw(true)//游戏胜利
+				}
+			}
+		}
+		
+		//挂右侧灯笼
+		function handleStart2(evt){
+			evt.preventDefault();//去除滑动默认
+			if(R>0){
+				R-=2;
+				$('#deng2').animate({top:34+R+'%'},100);
+				
+			}else{
+				au(2);
+				sucR=true;//成功次数
+				clearInterval(buR);
+				if(sucL==true && sucR==true){
+					timeOpen=false;
+					selRaw(true)//游戏胜利
+				}
+			}
+		}
+		//时间到
+		function timeOut(){
+			clearInterval(buL);
+			clearInterval(buR);
+			if(time==-1){selRaw(false);}
+		}
+		
+	</script>
+</body>
+</html>

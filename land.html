@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no,inital-scale=1"/>
+<title>信息登录</title>
+	<link href="css/lsj.css" rel="stylesheet"/>
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="js/lsj.js"></script>
+	<style>
+		.d1{
+			height: 58px;
+		}
+		.d2{
+			height: 376px;
+		}
+		#text{
+			height: 144.72px;
+		}
+		.d3{height:53.28px }
+		
+		@media screen and (max-width: 376px) {
+			.d1{
+			height: 42.52px;
+			}
+			.d2{
+			height: 332px;
+			}
+			#text{
+			height: 144.72px;
+			}
+			.d3{height:19.76px }
+		}
+		 input::-webkit-input-placeholder {
+          /* placeholder颜色  */
+         color: black;
+         /* placeholder字体大小  */
+         font-size: 16px;
+
+     }
+		
+		input{
+			width: 40%;
+			margin: 0 auto;
+			margin-top: 2%;
+			margin-bottom: 2%;
+			display: block;
+			outline: none;
+			border:10px #E9DAC1 solid;
+			height: 13%;
+			border-radius: 10px;
+		}
+		@media screen and (max-width: 320px) {
+			
+			 input::-webkit-input-placeholder {
+      	/* placeholder字体大小  */
+         font-size: 12px;
+			
+     }
+			.d1{
+			height: 44.8px;
+			}
+			.d2{
+			height: 296px;
+			}
+			#text{
+			height: 140.72px;
+			}
+			.d3{height:39.76px }
+		}
+	</style>
+</head>
+
+<body class="lbg_img" style="background-image: url(img/HCJ_img/bg.png)">
+	<audio src="audio/bg.mp3" autoplay></audio>
+	
+	<header class="lmar_cer ltex_cen lw100 lpos_rel d2" style="line-height: 40px;">
+		<!--logo-->
+		<div class="lpos_abs" style="width: 19%;top: 4%;left: 6%"><img src="img/logo.png" alt="logo" width="100%"/></div>
+		<div class="d1"></div>
+		<img src="img/goodluck.png" alt="伊利好运社" width="62%"/>
+		<br/>
+		<img src="img/land.png" alt="信息登录" width="50%"/>
+	</header>
+	
+	<section id="text" class="lw100">
+		<input id="uJob" class="lbg_co_5" type="text" placeholder="输入工号" maxlength="6"/>
+		<input id="uPhone" class="lbg_co_5" type="phone" placeholder="输入手机" maxlength="11"/>
+		<input id="uName" class="lbg_co_5" type="text" placeholder="输入姓名" maxlength="5"/>
+	</section>
+	<section class="lw100 ltex_cen d3" style="height: %;">
+		<img src="img/submit.png" onClick="sub()" width="36%" alt="登录"/>
+	</section>
+	<script>
+	
+	//提交
+		function sub(){
+			if($.trim($("input").val())!=""){
+			//用户电话
+			var phone_val=$.trim($("#uPhone").val());
+			//用户姓名
+			var name_val=$.trim($("#uName").val());
+			//用户编号
+			var number_val=$.trim($("#uJob").val());
+							
+			//上传信息
+				
+					 //{"JobID":number_val,"Name":name_val,"Phone":phone_val}).done(function(res){
+					
+					
+					
+				
+			}else{
+				alert("请输入您的信息")
+			}
+		}
+	</script>
+</body>
+</html>

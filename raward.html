@@ -1,0 +1,236 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no,inital-scale=1"/>
+<title>抽奖</title>
+	<link href="css/lsj.css" rel="stylesheet"/>
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	
+	<style>
+		.d7{border:2px black solid;}
+		.d1{
+			margin-top: 10%;
+		}
+		 input::-webkit-input-placeholder {
+         
+         /* placeholder字体大小  */
+         font-size: 14px;
+
+     }
+		.input{
+			height: 40px;
+			line-height: 40px;
+			border: 2px black solid;
+			width: 70%;
+			text-align:center;
+			background-color: white;
+			margin: 0 auto;
+			margin-top: 3%;
+		}
+		input{
+			border: none;
+			width: 80%;
+			margin:0 auto;
+			height: 50%;
+			outline: none;
+		}
+		#raward1,#raward2,#raward3,#start{
+			margin-top: 11%;
+		}
+		#raward1,#raward2,#raward3{
+			
+			width: 180px;
+			height: 100px;
+		}
+		#bg>p{
+			height: 90%;
+			margin-top: 10%
+			}
+		
+		/*iphone6适配*/
+		@media screen and (max-width: 376px) {
+		#raward1,#raward2,#raward3,#start{
+			margin-top: 9%;
+		}
+		}
+		/*安卓适配*/
+		@media screen and (max-width: 360px) {
+		#raward1,#raward2,#raward3,#start{
+			margin-top: 8%;
+		}
+			.d1{
+			margin-top: 6%;
+		}
+		}
+		/*iphone5SE适配*/
+		@media screen and (max-width: 320px) {
+			#raward1,#raward2,#raward3,#start{
+				margin-top: 8%;
+			
+			}
+			#raward1,#raward2,#raward3{
+				width: 170px;
+				height: 90px;
+			}
+			.d1{
+				margin-top: 1%;
+			}
+		}
+	</style>
+</head>
+
+<body class="lbg_img" style="background-image: url(img/HCJ_img/bg.png)">
+	<audio src="audio/bg.mp3" autoplay></audio>
+		<!--返回按钮+计时器-->
+	<header class="lbg_co_4 lw100 ldis_fle lpos_fix l10" style="height: 10%;justify-content: space-between;padding: 3% 0;">
+		<!--返回按键-->
+		<a href="index.html" class="ldis_blo lbg_co_2 ltex_cen lpos_rel" style="width: 18%;height: 78%;border: 6px #bdae9a solid; border-radius: 6px;margin-left: 3%;">
+			<img src="img/back.png" class="ldis_blo lpos_abs" style="right: 50%;top: 50%;margin-right: -20px;margin-top: -16px;" alt="返回" width="40px" height="32px"/>
+		</a>
+	</header>
+	<div style="margin-top: 27%"></div>
+	<!--抽奖组件-->
+	<section class="lbg_co_5 lmar_cer lpos_rel" style="width: 86%;height: 78%;border-radius: 10px;padding: 1px;">
+		<!--背景-->
+		<div id="bg" class="lmar_cer ldis_fle" style="width: 90%;height: 100%;justify-content: space-between">
+			<p><img src="img/raward/bg.png" height="100%" alt=""/></p>
+			<p><img src="img/raward/bg.png" height="100%" alt=""/></p>
+		</div>
+		<!--奖品-->
+		<div class="lpos_abs lw100 lh100" style="top: 0">
+			<!--一等奖-->
+			<div id="raward1" class="lbg_co_3 lmar_cer lpos_rel" style="border-radius: 10px;">
+				<div class="lw100 lh100 lpos_abs lbg_img d7" style="background-image: url(img/raward/raward1.png);border-radius: 10px;top:-10px;left: -10px;"></div>
+				<img class="ldis_blo lpos_abs" src="img/raward/tt1.png" width="70%;" alt="" style="bottom: -13px;left: 50%;margin-left: -35%"/>
+			</div>
+			<!--二等奖-->
+			<div id="raward2" class="lbg_co_3 lmar_cer lpos_rel" style="border-radius: 10px;">
+				<div class="lw100 lh100 lpos_abs lbg_img d7" style="background-image: url(img/raward/raward2.png);border-radius: 10px;top:-10px;left: -10px;"></div>
+				<img class="ldis_blo lpos_abs" src="img/raward/tt2.png" width="38%;" alt="" style="bottom: -13px;left: 50%;margin-left: -20%"/>
+			</div>
+			<!--三等奖-->
+			<div id="raward3" class="lbg_co_3 lmar_cer lpos_rel" style="border-radius: 10px;">
+				<div class="lw100 lh100 lpos_abs lbg_img d7" style="background-image: url(img/raward/raward3.png);border-radius: 10px;top:-10px;left: -10px;"></div>
+				<img class="ldis_blo lpos_abs" src="img/raward/tt3.png" width="70%;" alt="" style="bottom: -13px;left: 50%;margin-left: -35%"/>
+			</div>
+			<div id="start" onClick="start()" class="lmar_cer" style="width: 30%">
+				<img src="img/raward/start.png" width="100%" alt=""/>
+			</div>
+		</div>
+	</section>
+
+	<!--弹窗-->
+	<section id="raw" class="lpos_fix l10 lw100 lh100 ldis_non" style="top: 0px;left: 0px;">
+		<div class="lw100 lh100 lpos_fix lbg_co_black" style="opacity: 0.5"></div>
+		
+		<div class="lpos_fix lw100 ltex_cen d6" style="top: 0;left: 0;">
+			<div style="margin-top: 5%;">
+				<img src="img/goodluck.png" alt="好运社" width="20%"/>
+			</div>
+			<div class="lmar_cer lpos_rel lbg_co_5" style="width: 86%;height: 78%;border-radius: 10px;padding: 1px;padding-bottom: 10px;margin-top: 6%">
+				
+				<div class="lbg_co_3 lmar_cer lpos_rel" style="border-radius: 10px;margin-top: 11%;
+			width: 180px;
+			height: 100px;">
+					<div class="lw100 lh100 lpos_abs lbg_img d5" style="background-image: url(img/raward/raward1.png);border:2px #e8cf34 solid;border-radius: 10px;top:-10px;left: -10px;"></div>
+				</div>
+				
+				<img class="d3" src="img/raward/rawTest1.png" alt="" width="76%"/>
+				<div class="d2">
+					<div class="input"><input id="name" type="text" placeholder="请填写收货人姓名"/></div>
+					<div class="input"><input id="phone" type="text" placeholder="请填写手机号码" maxlength="11"/></div>
+					<div class="input"><input id="address" type="text" placeholder="请填写收货地址"/></div>
+				</div>
+				<br/>
+				<img class="d4" src="img/raward/rawTest12d.png" alt="" width="76%"/>
+				
+			</div>
+			<div class="d1 " style="">
+				<img src="img/raward/confim.png" onClick="confim()" alt="确定" width="30%"/>
+			</div>
+		
+		</div>
+		
+	</section>
+	<script>
+		var yaoJiang="",yj="";
+		//获取奖项
+		function start(){
+			$("#raw").css({"display":"block"});
+			//抽奖API
+			////////
+			yj=1
+			switch(yj){
+					case 0:raw(1);break;
+					case 1:raw(2);break;
+					case 2:raw(3);break;}
+			//var arr=[];
+			//摇奖动画
+			//for(var i;i<9;i++){
+//				var ra=Math.random();
+//				var r=Math.floor(ra*3);
+//				r++
+//				arr.push(r);
+//			}
+//			yj++
+//			arr.push(yj)
+//			var i=0;
+//			setTimeout('clearInterval(yaoJiang);aa(yj)',1000);
+//			yaoJiang=setInterval(function(){
+//				$("#raward"+arr[i]+">d5").css({"border":"2px #e8cf34 solid"})
+//				i++
+//				},500)
+			
+			//setTimeout('aa(yj)',3000)
+			
+		}
+		
+		//奖项弹窗		
+		function raw(nub){
+					$(".d3").attr("src","img/raward/rawTest"+nub+".png")
+					$(".d5").css({"background-image":"url(img/raward/raward"+nub+".png)"})
+				if(nub==3){
+					$(".d4").attr("src","img/raward/rawTest"+nub+"d.png")
+					$(".d2").html('<div class="input">11232143543545</div>')
+			}else{
+					$(".d4").attr("src","img/raward/rawTest12d.png")
+					$("#raw>div>div>.d2").html('<div class="input"><input id="Name" type="text" placeholder="请填写收货人姓名"/></div>\
+					<div class="input"><input id="Phone" type="text" placeholder="请填写手机号码" maxlength="11"/></div>\
+					<div class="input"><input id="Address" type="text" placeholder="请填写收货地址"/></div>');
+			}	
+		}
+		//确认提交
+		function confim(){
+			//提交API
+			////////
+			//用户电话
+			var phone_val=$.trim($("#Phone").val());
+			//用户姓名
+			var name_val=$.trim($("#Name").val());
+			//用户地址
+			var address_val=$.trim($("#Address").val());
+			
+			$(".d6").html('<div class="ltex_cen lmar_cer" style="margin-top: 30%;width: 80%;">\
+				<img src="img/raward/after.png" alt="好运社" width="100%"/>\
+				<br/>\
+				<br/>\
+				<img src="img/raward/share.png" onClick="share()" alt="立即分享" width="40%"/>\
+			</div>')
+		}
+		//分享遮罩页面
+		function share(){
+			$("#raw").append('<div class="lw100 lh100 lpos_fix lbg_co_black l10" style="opacity: 0.5;top:0;"></div>\
+			<div class="ltex_cen l10 lpos_fix" style="width: 80%;top: 0;right: 0;">\
+			<img src="img/raward/share_in.png" alt="点击右上角分享" width="100%"/>\
+			<br/>\
+			<img src="img/raward/share_btn.png" onClick="back()" alt="我知道了" width="40%"/>\
+		</div>')
+		}
+		function back(){
+			window.location.href="raward.html";
+		}
+
+	</script>
+</body>
+</html>
