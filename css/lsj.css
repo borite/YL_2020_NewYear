@@ -60,7 +60,10 @@ body{position: fixed;}
 .lbg_co_2{background-color:#e6d8c0;}
 .lbg_co_3{background-color:#C62E24;}
 .lbg_co_4{background-color:rgba(0,0,0,0.3);}
-.lbg_co_5{background-color:#E9DAC1;}
+.lbg_co_5{
+	background-color:#E9DAC1;
+	margin-top:0.8rem;
+}
 .lbg_co_6{background-color:#BFB09B;}
 .lbg_co_7{background-color:rgba(0,0,0,0.5);}
 

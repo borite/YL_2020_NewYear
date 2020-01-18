@@ -166,13 +166,13 @@
 			if(nub1>0){
 				au(2);
 				if(nub1==1){
-					setTimeout('pos1=0;nub1=0;LthlShow(1);if(suc>6){selRaw(true);}',1000)
+					setTimeout('pos1=0;nub1=0;LthlShow(1);if(suc>6){selRaw(true,2);}',1000)
 				}
 				nub1--;
 				$('#track1>.shan:eq('+nub1+')').animate({top:pos1+dis*nub1+'%'},1000);
 			}else{
 				au(1);
-				setTimeout('selRaw(false);',1000)
+				setTimeout('selRaw(false,0);',1000)
 			}
 		
 		}
@@ -183,18 +183,18 @@
 			if(nub2>0){
 				au(2);
 				if(nub2==1){
-					setTimeout('R=0;pos2=0;nub2=0;LthlShow(2);if(suc>6){selRaw(true);}',1000)
+					setTimeout('R=0;pos2=0;nub2=0;LthlShow(2);if(suc>6){selRaw(true,2);}',1000)
 				}
 				nub2--;
 				$('#track2>.shan:eq('+nub2+')').animate({top:pos2+dis*nub2+'%'},1000);
 			}else{
 				au(1);
-				setTimeout('selRaw(false);',1000)
+				setTimeout('selRaw(false,0);',1000)
 			}
 		}
 
 		function timeOut(){
-			if(time==-1){selRaw(false);}
+			if(time==-1){selRaw(false,0);}
 		}
 	
 	</script>

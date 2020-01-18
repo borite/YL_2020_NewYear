@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+	 <meta charset="utf-8">
+	 <meta name="viewport" content="width=device-width, target-densitydpi=device-dpi, initial-scale=1.0, user-scalable=no">
+	 <title>伊利好运社</title>
+	 <link href="css/lsj.css" rel="stylesheet"/>
+	 <script src="js/jquery-3.3.1.min.js"></script>
+	 <script src="js/common.js"></script>
+	 <script>
+		$(function(){
+			   
+			var _code=GetQueryString("code");
+			console.log(_code);
+			//获取openID
+			$.get("https://customer.imotstudio.net/yl2020NewYear/api/Game/CheckOpenID",{code:_code},function(data){
+				//uid=JSON.parse(data.openID);
+				console.log(data);	
+				if(data.Code==201){
+					localStorage.setItem('newUser', JSON.stringify(data));
+					$("#mate").attr('href','land.html');
+				}
+				if(data.Code==200){
+					localStorage.setItem('userInfo',JSON.stringify(data));
+					$("#mate").attr('href','index.html');
+				}
+				if(data.Code==400){
+					top.location="default.html";
+				}
+			})
+			
+		})
+	
+	 </script>
+</head>
+ 
+<body class="lbg_img" style="background-image: url(img/HCJ_img/bg.png)">
+	<audio src="audio/bg.mp3" autoplay loop></audio>
+	
+	<!--logo-->
+	<div class="lpos_fix" style="width: 19%;top: 4%;left: 6%"><img src="img/logo.png" alt="logo" width="100%"/></div>
+	<header class="lmar_cer ltex_cen" style="width: 62%;margin-top: 14%;line-height: 40px;">
+		<img src="img/goodluck.png" alt="伊利好运社" width="100%"/>
+		<br/>
+		<br/>
+		
+		<a id="mate" href="#" style="display: block;">
+			<img src="img/mate.png" alt="伊利员工登录" width="80%"/>
+		</a>
+		<br/>
+		<a href="land_f.html" style="display: block;">
+			<img src="img/mate_f.png" alt="非伊利员工登录" width="80%"/>
+		</a>
+	</header>
+</body>
+</html>
