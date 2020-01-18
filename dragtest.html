@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="js/drag.js"></script>
+	<title>无标题文档</title>
+	<style>
+		html,body{
+			width: 100%;
+			height: 100%;
+		}
+		.target{
+			width:200px; height: 200px;
+			background-color: #ccc;
+			position: relative;
+			left: 50%;
+		}
+		
+		.drag{
+			width: 50px;
+			height: 50px;
+			background-color: #FB787A;
+			position: absolute;
+			bottom: 0;
+		}
+		
+		.tt{width: 100px; height: 100px; background-color:#72C4FF; position: absolute;}
+		.cc{width: 60%; height:60%; background-color: #ccc; }
+	
+	</style>
+</head>
+
+<body>
+	
+	
+	<div class="target">
+	    <div class="tt">
+			<div class="cc"></div>
+		
+		
+		</div>
+	
+	
+	</div>
+	
+	
+	
+	<div class="drag">拖动我</div>
+	
+	
+	<script>
+		
+		document.body.addEventListener('touchmove', function(e) {
+    		e.preventDefault();
+    	});
+		var drag1 = new Drag({dragEle: '.drag', tarEle: '.cc', 
+                            onStart: function(e) {
+                               e.innerHTML="";
+                            },
+                            onMove: function(e) {
+								console.log("asx");
+                                //$(".drag1>img").css({"width":"6%"})
+                            }, 
+                            onMoveIn: function(e) {
+								console.log("我进来le");
+                                
+                            }, 
+                            onEnd: function(e) {
+								//au(2);
+								console.log("aaa");
+								//e.style.cssText+="display:none;"
+                             	/*$(".drag1").css({"display":"none"})
+                             	$(".box1").html('<img src="img/TDL_img/left.png" alt="迎新春年年如意" width="100%"/>')
+                             	$(".box1").css({"border":"none"})
+                             	$(".box_1").css({"opacity":"1"})*/
+                            },                
+                        });
+	
+	
+	</script>
+	
+</body>
+</html>

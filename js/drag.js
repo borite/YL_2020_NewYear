@@ -3,7 +3,7 @@
 /* 参数情况
 dragEle：需要拖动的元素（可以为元素本身，也可以为需拖动元素（组）的选择器 "#drag" or ".drag"， 可以是一组的元素）
 tarEle：目标位置元素
-posArr：定位数组（需要将元素拖至的固定区域,顺序为top,left,width,height）注：tarEle与posArr设置一个即可，两个同时设置则以posArr为主
+posArr：定位数组（需要将元素拖至的固定区域,顺序为top,left,width,height）注：tarEle与posArr设置一个即可，两个同时设置则以tarEle为主
 onStart：拖动开始时执行函数，参数为即将拖动的元素
 onMove：拖动时执行函数，参数为拖动的元素
 onMoveIn：拖动过程中拖动元素到达目标位置执行函数，目标位置元素（如果目标位置为一个元素时）
@@ -48,23 +48,14 @@ onEnd：拖动结束时拖动元素到达目标位置执行函数，参数为被
 		} else {
 			this.addEvent(this.dragEle);
 		}
-		
-		if(!!this.opts.tarEle && !!this.opts.posArr){
-			this.tarEle = typeof this.opts.tarEle === 'string' ? this.$(this.opts.tarEle)[0] : this.opts.tarEle;
-			this.tarT = this.opts.posArr[0];
-			this.tarL = this.opts.posArr[1];
-			this.tarW = this.opts.posArr[2];
-			this.tarH = this.opts.posArr[3];
-		}else if(!!this.opts.tarEle) {
+		if(!!this.opts.tarEle) {
 			//目标位置的元素
 			this.tarEle = typeof this.opts.tarEle === 'string' ? this.$(this.opts.tarEle)[0] : this.opts.tarEle;
-			console.log(this.tarEle);
 			this.tarT = this.tarEle.offsetTop;
 			this.tarL = this.tarEle.offsetLeft;
 			this.tarW = this.tarEle.offsetWidth || this.tarEle.clientWidth;
 			this.tarH = this.tarEle.offsetHeight || this.tarEle.clientHeight;
 		} else {
-			
 			this.tarT = this.opts.posArr[0];
 			this.tarL = this.opts.posArr[1];
 			this.tarW = this.opts.posArr[2];

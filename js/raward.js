@@ -30,13 +30,13 @@ function selRaw(e,gcode){
 				case "鼠你强":
 					cardCode="3";
 					break;
-				case "属你富":
+				case "鼠你富":
 					cardCode="1";
 					break;
-				case "属你美":
+				case "鼠你美":
 					cardCode="2";
 					break;	
-				case "属你乐":
+				case "鼠你乐":
 					cardCode="4";
 					break;	
 				case "鼠你甜":
