@@ -6,7 +6,10 @@
 <title>抽奖</title>
 	<link href="css/lsj.css" rel="stylesheet"/>
 	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-		<script type="text/javascript" src="js/lsj.js"></script>
+	<script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+	<script type="text/javascript" src="js/lsj.js"></script>
+	<script src="js/common.js"></script>
+	
 	<style>
 		.d7{border:2px black solid;}
 		.d1{
@@ -155,6 +158,11 @@
 	</section>
 	<script>
 		var yaoJiang="",yj="";
+		
+		var u = navigator.userAgent;
+		var _isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+		initWxConfig(_isiOS);
+		
 		//获取奖项
 		function start(){
 			$("#raw").css({"display":"block"});
