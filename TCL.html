@@ -252,7 +252,7 @@
 								  $(".drag-shanglian").css({"display":"none"})
 								  $(".shanglian").css({"opacity":"1"})
 								  $(".shanglian").css({"background-image":"url(img/TDL_img/left.png)"})
-								  setTimeout('sucPD()',1500);//判断游戏输赢
+								  sucPD();  //执行游戏输赢判断
                              },                
                         });
 		var px=$(".xialian").offset();
@@ -283,10 +283,10 @@
 								au(2);
 								  suc++;
 								  $(".xialian").css({"border":"none"})
-								 $(".drag-xialian").css({"display":"none"})
+								  $(".drag-xialian").css({"display":"none"})
 								  $(".xialian").css({"opacity":"1"})
 								  $(".xialian").css({"background-image":"url(img/TDL_img/right.png)"})
-								   setTimeout('sucPD()',1500);//判断游戏输赢
+								  sucPD();  //执行游戏输赢判断
                              },                
                         });
 		var ph=$(".hengpi").offset();
@@ -317,10 +317,10 @@
 								au(2);
 								  suc++;
 								  $(".hengpi").css({"border":"none"})
-								 $(".drag-hengpi").css({"display":"none"})
+								  $(".drag-hengpi").css({"display":"none"})
 								  $(".hengpi").css({"opacity":"1"})
 								  $(".hengpi").css({"background-image":"url(img/TDL_img/top.png)"})
-								   setTimeout('sucPD()',1500);//判断游戏输赢
+								  sucPD();  //执行游戏输赢判断
                              },                
                         });
 		var pf=$(".fuzi").offset();
@@ -349,12 +349,12 @@
                               onEnd: function(e) {
 								//console.log("哈哈g");
 								au(2);
-								  suc++;
-								    $(".fuzi").css({"border":"none"})
+								 suc++;
+								 $(".fuzi").css({"border":"none"})
 								 $(".drag-fu").css({"display":"none"})
-								  $(".fuzi").css({"opacity":"1"})
-								  $(".fuzi").css({"background-image":"url(img/TDL_img/fu.png)"})
-								   setTimeout('sucPD()',1500);//判断游戏输赢
+								 $(".fuzi").css({"opacity":"1"})
+								 $(".fuzi").css({"background-image":"url(img/TDL_img/fu.png)"})
+								 sucPD();  //执行游戏输赢判断
                              },                
                         });
 	//	console.log(drag1);

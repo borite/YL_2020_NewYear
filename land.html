@@ -19,24 +19,26 @@
 		}
 		.d3{height:53.28px }
 		
-		@media screen and (max-width: 376px) {
+		@media screen and (max-width: 375px) {
 			.d1{
 			height: 42.52px;
 			}
 			.d2{
-			height: 332px;
+			height: 310px;
 			}
 			#text{
 			height: 144.72px;
 			}
 			.d3{height:19.76px }
+		
+		    #blogo{width: 50%;}
+		
 		}
 		 input::-webkit-input-placeholder {
           /* placeholder颜色  */
          color: black;
          /* placeholder字体大小  */
          font-size: 14px;
-
      }
 		
 		input{
@@ -80,7 +82,7 @@
 		<!--logo-->
 		<div class="lpos_abs" style="width: 19%;top: 4%;left: 6%"><img src="img/logo.png" alt="logo" width="100%"/></div>
 		<div class="d1"></div>
-		<img src="img/goodluck.png" alt="伊利好运社" width="62%"/>
+		<img id="blogo" src="img/goodluck.png" alt="伊利好运社" width="62%"/>
 		<br/>
 		<img src="img/land.png" alt="信息登录" width="50%"/>
 	</header>
@@ -103,14 +105,16 @@
 			var name_val=$.trim($("#uName").val());
 			//用户编号
 			var number_val=$.trim($("#uJob").val());
-							
-			
+
 			if(phone_val=="" || name_val==""||number_val==""){
 				alert("请填写正确的信息");
 				return;
 			}
 			
 			var newUser=localStorage.getItem("newUser");
+			if(newUser==null){
+				location.replace('default.html');
+			}
 			
 			console.log(newUser);
 			
@@ -128,8 +132,7 @@
 					alert(res.Message);
 				}else{
 					localStorage.setItem('userInfo',JSON.stringify(res));
-					
-					 location.replace("index.html");
+					location.replace("index.html");
 				}
 			});
 			

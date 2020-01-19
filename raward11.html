@@ -2,13 +2,14 @@
 <html>
 <head>
 <meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no">
-	<title>抽奖</title>
+	<meta name="viewport" content="width=device-width,user-scalable=no,inital-scale=1"/>
+<title>抽奖</title>
 	<link href="css/lsj.css" rel="stylesheet"/>
 	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 	<script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
 	<script type="text/javascript" src="js/lsj.js"></script>
-	<script src="js/common.js?t=12"></script>
+	<script src="js/common.js"></script>
+	
 	<style>
 		.d7{border:2px black solid;}
 		.d1{
@@ -54,7 +55,6 @@
 		@media screen and (max-width: 376px) {
 		#raward1,#raward2,#raward3,#start{
 			margin-top: 9%;
-			
 		}
 		}
 		/*安卓适配*/
@@ -80,29 +80,11 @@
 				margin-top: 1%;
 			}
 		}
-		
-		
-				
-		#loading{
-			position: fixed;
-			width: 100px;
-			height: 40px;
-			text-align: center;
-			line-height: 40px;
-			border-radius: 5px;
-			background-color: rgba(0,0,0,0.7);
-			color: #fff;
-			font-size: 1rem;
-			left: 50%;
-			margin-left: -50px;
-			top: 50%;
-			display: none;
-		}
 	</style>
 </head>
 
 <body class="lbg_img" style="background-image: url(img/HCJ_img/bg.png)">
-	<audio id="bgm_audio" src="audio/bg.mp3" loop></audio>
+	<audio src="audio/bg.mp3" autoplay></audio>
 		<!--返回按钮+计时器-->
 	<header class="lbg_co_4 lw100 ldis_fle lpos_fix l10" style="height: 10%;justify-content: space-between;padding: 3% 0;">
 		<!--返回按键-->
@@ -159,7 +141,9 @@
 				
 				<img class="d3" src="img/raward/rawTest1.png" alt="" width="76%"/>
 				<div class="d2">
-					
+					<div class="input"><input id="name" type="text" placeholder="请填写收货人姓名"/></div>
+					<div class="input"><input id="phone" type="text" placeholder="请填写手机号码" maxlength="11"/></div>
+					<div class="input"><input id="address" type="text" placeholder="请填写收货地址"/></div>
 				</div>
 				<br/>
 				<img class="d4" src="img/raward/rawTest12d.png" alt="" width="76%"/>
@@ -172,149 +156,84 @@
 		</div>
 		
 	</section>
-	
-	<div id="loading">请稍后...</div>
-	
-	
 	<script>
-		var yaoJiang="",yj=true;
+		var yaoJiang="",yj="";
 		
 		var u = navigator.userAgent;
 		var _isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-		initWxConfig(_isiOS,'bgm_audio');
+		initWxConfig(_isiOS);
+		
 		//获取奖项
 		function start(){
+			$("#raw").css({"display":"block"});
 			//抽奖API
 			////////
-			var userInfo=localStorage.getItem('userInfo');
-			var a=JSON.parse(userInfo);
-			if(userInfo==null){
-				location.replace("default1.html");
-			}
-
-			$.get("https://customer.imotstudio.net/yl2020NewYear/api/Game/ChouPrize",{openID:a.Data.OpenID}).done(function(res){
-				console.log(res);
-				var c=res.Code;
-				if(c==200){
-					console.log(res.Message);
-					var aName=res.Message;
-					switch(aName){
-						case "这是一等奖":
-							ani(1,"");
-							break;
-						case "这是二等奖":
-							ani(2,"");
-							break;
-						case "三等奖爱奇艺":
-							ani(3,$.trim(res.Data));
-							break;
-					}
-				}
-				if(c==204){
-					alert("您已经抽过奖了，别太贪心哦~");
-				}
-				if(c==400){
-					alert("服务器繁忙，请重新抽取")
-				}
-				if(c==404){
-					alert("游戏时间已过，不能抽牌")
-				}
-			})
-	}
-		function ani(nub,iqyCode){
-			if(yj==true){
-					yj=false;
-					var j=0;
-					var arr=[1,2,3,2,1,2,3,2,1,2,3,2,1,2];
-					arr.push(nub);
-					arr.push(nub);
-					arr.push(nub);
-					arr.push(nub);
-					arr.push(nub);
-					arr.push(nub);
-					var j=0;
-					setTimeout('clearInterval(yaoJiang);raw('+nub+',"'+iqyCode+'");yj=true',4000);
-					yaoJiang=setInterval(function(){
-						$("#raward1>.d7").css({"border-color":"black"});
-						$("#raward2>.d7").css({"border-color":"black"});
-						$("#raward3>.d7").css({"border-color":"black"});
-						$("#raward"+arr[j]+">.d7").css({"border-color":"#e8cf34"});
-						j++;
-					},200);
-			}
-		}
+			yj=1
+			switch(yj){
+					case 0:raw(1);break;
+					case 1:raw(2);break;
+					case 2:raw(3);break;}
+			//var arr=[];
+			//摇奖动画
+			//for(var i;i<9;i++){
+//				var ra=Math.random();
+//				var r=Math.floor(ra*3);
+//				r++
+//				arr.push(r);
+//			}
+//			yj++
+//			arr.push(yj)
+//			var i=0;
+//			setTimeout('clearInterval(yaoJiang);aa(yj)',1000);
+//			yaoJiang=setInterval(function(){
+//				$("#raward"+arr[i]+">d5").css({"border":"2px #e8cf34 solid"})
+//				i++
+//				},500)
 			
+			//setTimeout('aa(yj)',3000)
+			
+		}
 		
 		//奖项弹窗		
-		function raw(nub,qycode){
-					$("#raw").css({"display":"block"});
+		function raw(nub){
 					$(".d3").attr("src","img/raward/rawTest"+nub+".png")
 					$(".d5").css({"background-image":"url(img/raward/raward"+nub+".png)"})
-					if(nub==3){
-						$(".d4").attr("src","img/raward/rawTest"+nub+"d.png")
-						$(".d2").html('<div class="input">'+qycode+'</div>')
-					}else{
-						$(".d4").attr("src","img/raward/rawTest12d.png")
-						$("#raw>div>div>.d2").html('<div class="input"><input id="Address" type="text" placeholder="请填写收货地址"/></div>');
+				if(nub==3){
+					$(".d4").attr("src","img/raward/rawTest"+nub+"d.png")
+					$(".d2").html('<div class="input">11232143543545</div>')
+			}else{
+					$(".d4").attr("src","img/raward/rawTest12d.png")
+					$("#raw>div>div>.d2").html('<div class="input"><input id="Name" type="text" placeholder="请填写收货人姓名"/></div>\
+					<div class="input"><input id="Phone" type="text" placeholder="请填写手机号码" maxlength="11"/></div>\
+					<div class="input"><input id="Address" type="text" placeholder="请填写收货地址"/></div>');
 			}	
 		}
 		//确认提交
 		function confim(){
-			
-			console.log()
-			var uInfo=JSON.parse(localStorage.getItem("userInfo"));
-			console.log(uInfo);
 			//提交API
 			////////
+			//用户电话
+			var phone_val=$.trim($("#Phone").val());
+			//用户姓名
+			var name_val=$.trim($("#Name").val());
 			//用户地址
-			if($("#Address").length>0){
-				var address_val=$.trim($("#Address").val());
-
-				if(address_val==""){
-					alert("请输入您的收货地址");
-					return;
-				}
-				$.ajax({
-						type: "PUT",
-						url: "https://customer.imotstudio.net/yl2020NewYear/api/Game/UpDateAddress",
-						data: {"OpenID": uInfo.Data.OpenID, "Address": address_val},
-						beforeSend:function(){
-							//<div id="loading">请稍后...</div>
-							$("#loading").css('display','block');
-						},
-						success:function(res){
-							console.log(res);
-							$(".d6").html('<div class="ltex_cen lmar_cer" style="margin-top: 30%;width: 80%;">\
-												<img src="img/raward/after.png" alt="好运社" width="100%"/>\
-												<br/>\
-												<br/>\
-												<img src="img/raward/share.png" onClick="share()" alt="立即分享" width="40%"/>\
-											</div>');
-							
-						},
-						complete:function(){
-							$("#loading").css('display','none');
-						}
-						
-				});	
-			}else{
-				$(".d6").html('<div class="ltex_cen lmar_cer" style="margin-top: 30%;width: 80%;">\
-									<img src="img/raward/after.png" alt="好运社" width="100%"/>\
-									<br/>\
-									<br/>\
-									<img src="img/raward/share.png" onClick="share()" alt="立即分享" width="40%"/>\
-							   </div>');
-			}
-
+			var address_val=$.trim($("#Address").val());
+			
+			$(".d6").html('<div class="ltex_cen lmar_cer" style="margin-top: 30%;width: 80%;">\
+				<img src="img/raward/after.png" alt="好运社" width="100%"/>\
+				<br/>\
+				<br/>\
+				<img src="img/raward/share.png" onClick="share()" alt="立即分享" width="40%"/>\
+			</div>')
 		}
 		//分享遮罩页面
 		function share(){
 			$("#raw").append('<div class="lw100 lh100 lpos_fix lbg_co_black l10" style="opacity: 0.5;top:0;"></div>\
-								<div class="ltex_cen l10 lpos_fix" style="width: 80%;top: 0;right: 0;">\
-								<img src="img/raward/share_in.png" alt="点击右上角分享" width="100%"/>\
-								<br/>\
-								<img src="img/raward/share_btn.png" onClick="back()" alt="我知道了" width="40%"/>\
-							</div>');
+			<div class="ltex_cen l10 lpos_fix" style="width: 80%;top: 0;right: 0;">\
+			<img src="img/raward/share_in.png" alt="点击右上角分享" width="100%"/>\
+			<br/>\
+			<img src="img/raward/share_btn.png" onClick="back()" alt="我知道了" width="40%"/>\
+		</div>')
 		}
 		function back(){
 			

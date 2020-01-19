@@ -10,12 +10,7 @@
 	<script type="text/javascript" src="js/raward.js"></script>
 	<style>
 		/*爆竹动画*/
-		.Bo,.fa{
-			position: absolute;
-			z-index: 2;
-			text-align: center;
-			width: 100%;
-			animation: actBo 1.5s linear;
+		.Bo{animation: actBo 1.5s linear;
 			animation-fill-mode : forwards;}
 		@keyframes actBo{
 			0%{top:-29%;}
@@ -134,12 +129,8 @@
 		function handleStart1(evt){
 			evt.preventDefault();//去除滑动默认
 			var j=nub1-1
-			var i=$('#track1>p:eq('+j+')').attr("class")
-			if(i=='fa'){
-				console.log('左错')
+			if(nub1==0){
 				au(1);
-				clearInterval(creaBoTimer);
-				setTimeout('selRaw(false,0);',800)//游戏失败;
 			}else{
 				au(0);
 				$('#track1>p:eq('+j+')').html('<img class="BoStyle" src="img/DBZ_img/Bo_after.png" width="100%" alt=""/>')
@@ -158,12 +149,8 @@
 		function handleStart2(evt){
 			evt.preventDefault();//去除滑动默认
 			var j=nub2-1
-			var i=$('#track2>p:eq('+j+')').attr("class")
-			if(i=='fa'){
-				console.log('中错')
+			if(nub2==0){
 				au(1);
-				clearInterval(creaBoTimer);
-				setTimeout('selRaw(false,0);',800)//游戏失败;
 			}else{
 				au(0);
 				$('#track2>p:eq('+j+')').html('<img class="BoStyle" src="img/DBZ_img/Bo_after.png" width="100%" alt=""/>')
@@ -182,12 +169,8 @@
 		function handleStart3(evt){
 			evt.preventDefault();//去除滑动默认
 			var j=nub3-1
-			var i=$('#track3>p:eq('+j+')').attr("class")
-			if(i=='fa'){
-				console.log('右错')
+			if(nub3==0){
 				au(1);
-				clearInterval(creaBoTimer);
-				setTimeout('selRaw(false,0);',800)//游戏失败;
 			}else{
 				au(0);
 				$('#track3>p:eq('+j+')').html('<img class="BoStyle" src="img/DBZ_img/Bo_after.png" width="100%" alt=""/>')
@@ -202,75 +185,48 @@
 			}
 		}
 		//为单行增加爆竹
-		function BoShow(tr,fa){
-			
-			if(fa==0){
-				$("#track"+tr).append('<p class="Bo"><img class="BoStyle" src="img/DBZ_img/Bo.png" width="60%" alt=""/></p>');
-				
-			}else{
-				$("#track"+tr).append('<p class="fa"><img class="BoStyle" src="img/DBZ_img/fa.png" width="60%" alt=""/></p>');
-				
-			}
+		function BoShow(tr){
+			$("#track"+tr).append('<p class="Bo lpos_abs l2 ltex_cen lw100 ltex_cen"><img class="BoStyle" src="img/DBZ_img/Bo.png" width="60%" alt=""/></p>');
 			switch(tr){
-					case 1:
-					nub1++;
-					break;
-					case 2:
-					nub2++;
-					break;
-					case 3:
-					nub3++;
-					break;
-					   }
+				case 1:
+				nub1++;
+				break;
+				case 2:
+				nub2++;
+				break;
+				case 3:
+				nub3++;
+				break;
+				   }
 		}
 		//随机出现样式
 		function creaBo(){
 			var j="";
+			var chess=[1,2,3,4,5,6];
 			var ra=Math.random();
-			j=Math.floor(ra*9);
-			
+			j=Math.floor(ra*chess.length);
+			i=j+1;
 			switch(j){
 				case 0://一串5个
-					BoShow(1,0)
+					BoShow(1)
 				break;
 				case 1://一串4个
-					BoShow(2,0)
+					BoShow(2)
 				break;
 				case 2://一串3个
-					BoShow(3,0)
+					BoShow(3)
 				break;
 				case 3://一串5个
-					BoShow(1,1)
+					BoShow(1)
+					BoShow(3)
 				break;
-				case 4://一串4个
-					BoShow(2,1)
+				case 4://一串5个
+					BoShow(1)
+					BoShow(2)
 				break;
-				case 5://一串3个
-					BoShow(3,1)
-				break;
-				case 6://一串5个
-					BoShow(1,0)
-					BoShow(3,0)
-				break;
-				case 7://一串5个
-					BoShow(1,0)
-					BoShow(2,0)
-				break;
-				case 8://一串5个
-					BoShow(2,0)
-					BoShow(3,0)
-				break;
-				case 6://一串5个
-					BoShow(1,0)
-					BoShow(3,1)
-				break;
-				case 7://一串5个
-					BoShow(1,1)
-					BoShow(2,0)
-				break;
-				case 8://一串5个
-					BoShow(2,1)
-					BoShow(3,0)
+				case 5://一串5个
+					BoShow(2)
+					BoShow(3)
 				break;
 			}
 		}

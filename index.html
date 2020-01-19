@@ -2,18 +2,36 @@
 <html>
 <head>
 <meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,user-scalable=no,inital-scale=1"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no">
 <title>伊利好运社</title>
 	<link href="css/lsj.css" rel="stylesheet"/>
 	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="js/lsj.js"></script>
 	<style>
 		.a{width: 26%}
+		
+		
 		footer{height: 40%;}
+		
+		.scene{	
+			 font-size: 1.1rem;
+			 color: #E5B900;
+			 text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
+			 text-align: center;
+			 padding: 1rem;
+			 line-height: 1.25rem;
+			 box-sizing: border-box;
+			 padding-top: 0;
+			 display: none;
+		}
+		
+		
 		/*iphone6适配*/
 		@media screen and (max-width: 375px) {
-		  a{width: 20%}
-		  footer{height: 35%;}
+		  	a{width: 20%}
+			
+		  	footer{height: 35%;}
+			
 			.hcj{
 				width:86.2%;
 			}
@@ -21,48 +39,115 @@
 			.gdl{
 				width: 102.5%;
 			}
-
-			
+			#blogo{width: 75%; display: block; margin: 0 auto;}	
 		}
 		/*安卓适配*/
 		@media screen and (max-width: 360px) {
 			.a{width: 26%}
 			footer{height: 40%;}
+			#blogo{width: 75%; display: block; margin: 0 auto;}	
 		}
 		/*iphone5SE适配*/
 		@media screen and (max-width: 320px) {
 			.a{width: 26%}
-		footer{height: 38%;}
+			footer{height: 38%;}
+			#blogo{width: 65%; display: block; margin: 0 auto;}	
 		}
 	</style>
 </head>
 
 <body class="lbg_img" style="background-image: url(img/HCJ_img/bg.png)">
 	<audio src="audio/bg.mp3" autoplay></audio>
+	
+
 	<!--logo-->
 	<div class="lpos_fix" style="width: 19%;top: 4%;left: 6%"><img src="img/logo.png" alt="logo" width="100%"/></div>
 	<header class="lmar_cer" style="width: 62%;margin-top: 14%;line-height: 40px;">
-		<img src="img/goodluck.png" alt="伊利好运社" width="100%"/>
-		<br/>
-		<img src="img/intraduction.png" alt="游戏规则" width="100%"/>
+		<img id="blogo" src="img/goodluck.png" alt="伊利好运社" width="100%"/>
 	</header>
-	<footer id="but" class="lw100 ldis_fle lmar_cer lbg_co_5" style="bottom: 0px;justify-content: space-around; width: 70%;border-radius: 14px;justify-content: space-around;align-content: space-around;flex-wrap: wrap-reverse;border: 14px #E9DAC1 solid;">
-		<div onClick="Achang(7)" class="ltex_cen ldis_blo a" style="width:100%;"><img src="img/fd.png" alt="福袋" width="40%"/></div>
-		<div onClick="Achang(1)" class="ltex_cen ldis_blo a">
-			<img src="img/tcl.png" alt="贴春联" width="78%"/>
-		</div>
-		<div onClick="Achang(2)" class="ltex_cen ldis_blo a">
-			<img src="img/thl.png" alt="糖葫芦" width="100%"/>
-		</div>
-		<div onClick="Achang(3)" class="ltex_cen ldis_blo a">
-			<img src="img/dbz.png" alt="点爆竹" width="80%"/>
-		</div>
-		<div onClick="Achang(5)" class="ltex_cen ldis_blo a">
-			<img src="img/hcj.png" alt="贺春节" width="80%" class="hcj"/>
-		</div>
-		<div onClick="Achang(6)" class="ltex_cen ldis_blo a">
-			<img src="img/gdl.png" alt="挂灯笼" width="94%" class="gdl"/>
-		</div>
-	</footer>
+	<!--游戏选择场景-->
+	<section id="play_scene" class="scene" style="display: none;">
+		<img src="img/intraduction.png" alt="游戏规则" width="94%" style="margin: 1rem auto; display: block;"/>
+		<footer id="but" class="lw100 ldis_fle lmar_cer lbg_co_5" style="bottom: 0px;justify-content: space-around; width: 70%;border-radius: 14px;justify-content: space-around;align-content: space-around;flex-wrap: wrap-reverse;border: 14px #E9DAC1 solid;">
+			<div onClick="Achang(7)" class="ltex_cen ldis_blo a" style="width:100%;"><img src="img/fd.png" alt="福袋" width="40%"/></div>
+			<div onClick="Achang(1)" class="ltex_cen ldis_blo a">
+				<img src="img/tcl.png" alt="贴春联" width="78%"/>
+			</div>
+			<div onClick="Achang(2)" class="ltex_cen ldis_blo a">
+				<img src="img/thl.png" alt="糖葫芦" width="100%"/>
+			</div>
+			<div onClick="Achang(3)" class="ltex_cen ldis_blo a">
+				<img src="img/dbz.png" alt="点爆竹" width="80%"/>
+			</div>
+			<div onClick="Achang(5)" class="ltex_cen ldis_blo a">
+				<img src="img/hcj.png" alt="贺春节" width="80%" class="hcj"/>
+			</div>
+			<div onClick="Achang(6)" class="ltex_cen ldis_blo a">
+				<img src="img/gdl.png" alt="挂灯笼" width="94%" class="gdl"/>
+			</div>
+		</footer>
+	</section>
+	
+	<!--介绍场景1-->
+	<section id="intro1" class="scene" style="display: block; margin-top: 1rem;">
+		<p style="line-height: 1.5rem;">
+			Hello，亲爱的伊利小伙伴！<br>
+			欢迎来到“伊利好运社”<br>
+			潘帅在这里为你准备了专“鼠”好运卡<br>
+			和专“鼠”祝福<br>
+			还有机会获得幸运大礼包<br>
+			怎么获取？<br>
+			积极参与“伊利好运社”<br>
+			精心设计的益智闯关游戏<br>
+			通关成功即可获得<br>
+			还等什么?快来挑战吧！
+		</p>
+		<input id="to_step2" type="image" src="img/confim.png" width="30%" style=" margin: 2rem auto 0 auto; display: block;"/>
+	</section>
+	<!--介绍场景2-->
+	<section id="intro2" class="scene" style="text-align: left;">
+		<p>游戏规则：</p>
+			<ul style="font-size: 0.8rem; line-height: 1.2rem; margin-top: 0.5rem;">
+			   <li>1.在“伊利好运社”悬挂了5个祝愿牌，点击祝愿牌即可进入相应的游戏页面，成功挑战任意1个闯关游戏，可随机获得由潘帅为大家送出的“鼠你好运卡”与专属祝福。</li>
+			   <li>2.集齐5张不同“鼠你好运卡”，即可点亮福袋，抽取潘帅为你准备的新年祝福礼包。</li>
+			   <li>3.“尊重卡”为随机转化卡，点击兑换即可随机获得一张“鼠你好运卡”。</li>
+			   <li>4.“鼠你好运卡”可以互相赠送，只需填入对方员工编码以及姓名即可将卡片送给对方。</li>
+			   <li>5.卡片上限：每人每天最多获得10张“鼠你好运卡”，每个闯关游戏通关后最多获得2张“鼠你好运卡”。</li>
+			   <li>6.集卡时间：2020年1月21日10:00—1月25日23:59，欢迎各位员工积极挑战。</li>
+			</ul>
+		<input id="to_step3" type="image" src="img/confim.png" width="30%" style=" margin: 0 auto; margin-top: 0.8rem; display: block;"/>
+	</section>
+	
+	<script>
+		
+		var n_first=localStorage.getItem('noFirst');
+		
+		if(n_first==null){
+			$("#to_step2").on('touchend',function(e){
+			   console.log(e);
+			   e.stopPropagation();
+			   e.preventDefault();  
+			   $(".scene").css('display','none');
+			   $("#intro2").css('display','block');
+		   });
+
+		   $("#to_step3").on('touchend',function(e){
+			   e.stopPropagation();
+			   e.preventDefault();
+			   $(".scene").css('display','none');
+			   $("#play_scene").css('display','block');
+			   localStorage.setItem('noFirst','1');
+		   })
+		}else{
+			$(".scene").css('display','none');
+			$("#play_scene").css('display','block');
+		}
+		
+		
+	  
+	
+	
+	</script>
+
 </body>
 </html>
