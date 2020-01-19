@@ -9,7 +9,7 @@ function selRaw(e,gcode){
 	timeOpen=false;//计时器停止
     if(e==true && gcode>0){
 		//getCard(gcode);
-		
+		viceBG(0);
 	var userInfo=localStorage.getItem('userInfo');
 	var a=JSON.parse(userInfo);
 	console.log(JSON.parse(userInfo));
@@ -56,20 +56,21 @@ function selRaw(e,gcode){
 		}
 		
 		if(c==204){
+			viceBG(0);
 			$("#end").html('<div class="lw100 lh100 lpos_fix lbg_co_black" style="opacity: 0.5;top: 0;"></div>\
 				<div class="lpos_fix lw100 ltex_cen" style="top: 6%;line-height: 60px;">\
 					<img src="img/goodluck.png" alt="好运社" width="30%"/>\
 					<br/>\
 					<img src="img/win.png" alt="" width="40%"/>\
 					<br/>\
-					<img src="img/wintext.png" alt="" width="70%"/>\
+					<img src="img/wintest.png" alt="" width="70%"/>\
 					<br/>\
 					<img onClick="reStart()" src="img/restart.png" alt="重新开始游戏" width="50%"/>\
 				</div>\
 				<header class="lw100 ldis_fle lpos_fix l10" style="height: 10%;justify-content: space-between;padding: 3% 0;top:0">\
-				<a href="index.html" class="ldis_blo lbg_co_2 ltex_cen lpos_rel" style="width: 20%;height: 78%;border: 6px #bdae9a solid; border-radius: 6px;margin-left: 3%;">\
-					<img src="img/back.png" class="ldis_blo lpos_abs" style="right: 50%;top: 50%;margin-right: -25px;margin-top: -21px;" alt="返回" width="50px" height="42px"/>\
-				</a>\
+				<div onClick="Achang(0)" class="ldis_blo lbg_co_2 ltex_cen lpos_rel" style="width: 18%;height: 78%;border: 6px #bdae9a solid; border-radius: 6px;margin-left: 3%;">\
+			<img src="img/back.png" class="ldis_blo lpos_abs" style="right: 50%;top: 50%;margin-right: -20px;margin-top: -16px;" alt="返回" width="40px" height="32px"/>\
+		</div>\
 				</header>');
 		}
 		
@@ -124,7 +125,7 @@ function selRaw(e,gcode){
 			}
 		}*/
 	}else{
-		vice(1);
+		viceBG(1);
 		//失败界面
 		$("#end").html('<div class="lw100 lh100 lpos_fix lbg_co_black" style="opacity: 0.5;top: 0;"></div>\
 		<div class="lpos_fix lw100 ltex_cen" style="top: 6%;line-height: 60px;">\
@@ -137,9 +138,9 @@ function selRaw(e,gcode){
 			<img onClick="reStart()" src="img/restart.png" alt="重新开始游戏" width="50%"/>\
 		</div>\
 		<header class="lw100 ldis_fle lpos_fix l10" style="height: 10%;justify-content: space-between;padding: 3% 0;top:0">\
-		<a href="index.html" class="ldis_blo lbg_co_2 ltex_cen lpos_rel" style="width: 20%;height: 78%;border: 6px #bdae9a solid; border-radius: 6px;margin-left: 3%;">\
-			<img src="img/back.png" class="ldis_blo lpos_abs" style="right: 50%;top: 50%;margin-right: -25px;margin-top: -21px;" alt="返回" width="50px" height="42px"/>\
-		</a>\
+		<div onClick="Achang(0)" class="ldis_blo lbg_co_2 ltex_cen lpos_rel" style="width: 18%;height: 78%;border: 6px #bdae9a solid; border-radius: 6px;margin-left: 3%;">\
+			<img src="img/back.png" class="ldis_blo lpos_abs" style="right: 50%;top: 50%;margin-right: -20px;margin-top: -16px;" alt="返回" width="40px" height="32px"/>\
+		</div>\
 		</header>')
 		
 	}
@@ -162,9 +163,9 @@ function getRaw(nam){
 			<img onClick="det('+nam+')" src="img/detile.png" alt="点击查看" width="50%"/>\
 		</div>\
 		<header class="lw100 ldis_fle lpos_fix l10" style="height: 10%;justify-content: space-between;padding: 3% 0;top:0">\
-		<a href="index.html" class="ldis_blo lbg_co_2 ltex_cen lpos_rel" style="width: 20%;height: 78%;border: 6px #bdae9a solid; border-radius: 6px;margin-left: 3%;">\
-			<img src="img/back.png" class="ldis_blo lpos_abs" style="right: 50%;top: 50%;margin-right: -25px;margin-top: -21px;" alt="返回" width="50px" height="42px"/>\
-		</a>\
+		<div onClick="Achang(0)" class="ldis_blo lbg_co_2 ltex_cen lpos_rel" style="width: 18%;height: 78%;border: 6px #bdae9a solid; border-radius: 6px;margin-left: 3%;">\
+			<img src="img/back.png" class="ldis_blo lpos_abs" style="right: 50%;top: 50%;margin-right: -20px;margin-top: -16px;" alt="返回" width="40px" height="32px"/>\
+		</div>\
 		</header>')
 	
 }
@@ -181,9 +182,9 @@ function det(n){
 		<img src="img/fu_img/card'+n+'.png" alt="" width="64%"/>\
 	</div>\
 		<header class="lw100 ldis_fle lpos_fix l10" style="height: 10%;justify-content: space-between;padding: 3% 0;top:0">\
-		<a href="index.html" class="ldis_blo lbg_co_2 ltex_cen lpos_rel" style="width: 20%;height: 78%;border: 6px #bdae9a solid; border-radius: 6px;margin-left: 3%;">\
-			<img src="img/back.png" class="ldis_blo lpos_abs" style="right: 50%;top: 50%;margin-right: -25px;margin-top: -21px;" alt="返回" width="50px" height="42px"/>\
-		</a>\
+		<div onClick="Achang(0)" class="ldis_blo lbg_co_2 ltex_cen lpos_rel" style="width: 18%;height: 78%;border: 6px #bdae9a solid; border-radius: 6px;margin-left: 3%;">\
+			<img src="img/back.png" class="ldis_blo lpos_abs" style="right: 50%;top: 50%;margin-right: -20px;margin-top: -16px;" alt="返回" width="40px" height="32px"/>\
+		</div>\
 		</header>')
 }
 

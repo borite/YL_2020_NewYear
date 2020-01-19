@@ -37,10 +37,9 @@
 	<!--返回按钮-->
 	<header class="lbg_co_4 lw100 ldis_fle lpos_fix l10" style="height: 10%;justify-content: space-between;padding: 3% 0;">
 		<!--返回按键-->
-		<!--返回按键-->
-		<a href="index.html" class="ldis_blo lbg_co_2 ltex_cen lpos_rel" style="width: 18%;height: 78%;border: 6px #bdae9a solid; border-radius: 6px;margin-left: 3%;">
+		<div onClick="Achang(0)" class="ldis_blo lbg_co_2 ltex_cen lpos_rel" style="width: 18%;height: 78%;border: 6px #bdae9a solid; border-radius: 6px;margin-left: 3%;">
 			<img src="img/back.png" class="ldis_blo lpos_abs" style="right: 50%;top: 50%;margin-right: -20px;margin-top: -16px;" alt="返回" width="40px" height="32px"/>
-		</a>
+		</div>
 		<div class="lfont_1 lco_1 lh100 lpos_rel" style="width: 34%;text-align: center;margin-right: 3%;line-height: 100%;font-size: 60px;">
 			<b id="timeShow" class="ldis_blo lpos_abs" style="right: 50%;top: 50%;margin-right: -60px;margin-top: -30px;width: 120px;height: 60px;">20S</b>
 		</div>
@@ -166,7 +165,7 @@
 				clearInterval(buL);
 				if(sucL==true && sucR==true){
 					timeOpen=false;
-					selRaw(true)//游戏胜利
+					selRaw(true,5)//游戏胜利
 				}
 			}
 		}
@@ -184,7 +183,7 @@
 				clearInterval(buR);
 				if(sucL==true && sucR==true){
 					timeOpen=false;
-					selRaw(true)//游戏胜利
+					selRaw(true,5)//游戏胜利
 				}
 			}
 		}
@@ -192,7 +191,7 @@
 		function timeOut(){
 			clearInterval(buL);
 			clearInterval(buR);
-			if(time==-1){selRaw(false);}
+			if(time==-1){selRaw(false,0);}
 		}
 		
 	</script>

@@ -43,3 +43,35 @@ function viceBG(res){
 	var player = $("#vice")[0]; /*jquery对象转换成js对象*/
 	player.play();
 };
+//页面跳转控制
+function Achang(nub){
+	switch(nub){
+		case 0:
+		location.replace('index.html');
+		break;
+		case 1:
+		location.replace('TCL.html');
+		break;
+		case 2:
+		location.replace('THL.html');
+		break;
+		case 3:
+		location.replace('DBZ.html');
+		break;
+		case 4:
+		location.replace('THL.html');
+		break;
+		case 5:
+		location.replace('HCJ.html');
+		break;
+		case 6:
+		location.replace('GDL.html');
+		break;
+		case 7:
+		location.replace('fu.html');
+		break;
+		case 8:
+		location.replace('land.html');
+		break;
+	}
+}

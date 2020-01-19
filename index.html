@@ -8,7 +8,7 @@
 	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="js/lsj.js"></script>
 	<style>
-		a{width: 25%}
+		.a{width: 26%}
 		footer{height: 40%;}
 		/*iphone6适配*/
 		@media screen and (max-width: 375px) {
@@ -26,12 +26,12 @@
 		}
 		/*安卓适配*/
 		@media screen and (max-width: 360px) {
-			a{width: 26%}
+			.a{width: 26%}
 			footer{height: 40%;}
 		}
 		/*iphone5SE适配*/
 		@media screen and (max-width: 320px) {
-			a{width: 26%}
+			.a{width: 26%}
 		footer{height: 38%;}
 		}
 	</style>
@@ -47,22 +47,22 @@
 		<img src="img/intraduction.png" alt="游戏规则" width="100%"/>
 	</header>
 	<footer id="but" class="lw100 ldis_fle lmar_cer lbg_co_5" style="bottom: 0px;justify-content: space-around; width: 70%;border-radius: 14px;justify-content: space-around;align-content: space-around;flex-wrap: wrap-reverse;border: 14px #E9DAC1 solid;">
-		<a href="fu.html" class="ltex_cen ldis_blo" style="width:100%;"><img src="img/fd.png" alt="福袋" width="40%"/></a>
-		<a href="TCL.html" class="ltex_cen ldis_blo">
+		<div onClick="Achang(7)" class="ltex_cen ldis_blo a" style="width:100%;"><img src="img/fd.png" alt="福袋" width="40%"/></div>
+		<div onClick="Achang(1)" class="ltex_cen ldis_blo a">
 			<img src="img/tcl.png" alt="贴春联" width="78%"/>
-		</a>
-		<a href="THL.html" class="ltex_cen ldis_blo">
+		</div>
+		<div onClick="Achang(2)" class="ltex_cen ldis_blo a">
 			<img src="img/thl.png" alt="糖葫芦" width="100%"/>
-		</a>
-		<a href="DBZ.html" class="ltex_cen ldis_blo">
+		</div>
+		<div onClick="Achang(3)" class="ltex_cen ldis_blo a">
 			<img src="img/dbz.png" alt="点爆竹" width="80%"/>
-		</a>
-		<a href="HCJ.html" class="ltex_cen ldis_blo">
+		</div>
+		<div onClick="Achang(5)" class="ltex_cen ldis_blo a">
 			<img src="img/hcj.png" alt="贺春节" width="80%" class="hcj"/>
-		</a>
-		<a href="GDL.html" class="ltex_cen ldis_blo">
+		</div>
+		<div onClick="Achang(6)" class="ltex_cen ldis_blo a">
 			<img src="img/gdl.png" alt="挂灯笼" width="94%" class="gdl"/>
-		</a>
+		</div>
 	</footer>
 </body>
 </html>

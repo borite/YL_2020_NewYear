@@ -2,136 +2,199 @@
 <html>
 <head>
 <meta charset="utf-8">
-	 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>贴对联</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<title>贴对联</title>
 	<link href="css/lsj.css" rel="stylesheet"/>
 	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="js/lsj.js"></script>
-	<script type="text/javascript" src="js/drag.js"></script>
+	<script type="text/javascript" src="js/darg.js"></script>
 	<script type="text/javascript" src="js/raward.js"></script>
 	<style>
-		.box_1{
-			background-color: aqua;
+		body{position: relative;}
+		.game-content{
+			width: 100%;
+			height: 80%;
+			
+			position: relative;
 		}
-		.list{
-			height: 40%;
-			width: 58%;
-			padding: 1px;
+		.door{
+			background-image: url(img/TDL_img/bg_1.png);
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+			width: 100%;
+			height: 63%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			position: absolute;
+			z-index: 8;
 		}
-		.left{
-			height: 60%;
-			width: 70%;
-			padding: 1px;
+		
+		.active-area {
+			width: 62%;
+			height: 50%;
+			
+			margin-top: 15%;
+			position: relative;
+		}
+		
+		.active-area .duilian{
+			width: 25px;
+			height: 75%;
+			border:2px black dashed;
+			position: absolute;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: contain;
+		}
+		
+		.shanglian{
+			top: 12%;
+			left: 3%;
 			
 		}
-		/*加虚线*/
-		.box1,.box2,.box3,.box4,.box5{
-			border: 2px black dashed;
-		}
-		.box_1,.box_2{
-			width:76px;height: 80%;
-		}
-		.box1,.box2{
-			width: 24px;
-			height: 70%;
-			margin: 0 auto;
-		}
-		.box_3{
+		
+		.drag-area-sl{
+			background-color: #fff;
+			opacity: 0;
 			width: 100%;
-			height: 10%;
-		}
-		.box3{
-			width: 38%;
 			height: 100%;
-			margin: 0 auto;
+			z-index: 8;
 		}
 		
-		.box_4{
-			display: flex;
-			justify-content: space-between;
-			width: 46%;
-			height: 80%;
-		}
-		.box4,.box5{
-			width: 46px;
-			height: 46px;
-			margin-top: 10%;
+		.xialian{
+			top: 12%;
+			right: 3.2%;
+			
 		}
 		
-		.d1{
-			height: 340px;
+		.hengpi{
+			width: 40%;
+			height: 20px;
+			top: 0px;
+			left: 29.5%;	
+			border:2px black dashed;
+			position: absolute;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: contain;
+			
 		}
-		/*iphone6适配*/
-		@media screen and (max-width: 376px) {
-			.d1{
-			height: 310px;
+		
+		.drag-area-hp{
+			background-color: #fff;
+			opacity: 0;			
 		}
+		
+		.fuzi{
+			width: 48px; 
+			height: 48px; 
+			border:2px black dashed;
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			top: 40%;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: contain;
+			
 		}
-		/*安卓适配*/
-		@media screen and (max-width: 360px) {
-			.d1{
-			height: 300px;
+		
+		.bottom-bg{
+			width: 100%;
+			height: 45%;
+			background-color: #E9DAC1;
+			position: absolute;
+			bottom: 0;
 		}
+		
+		
+		.drag-img{
+			display: block;
+			position: absolute;
+			z-index: 9;
 		}
-		/*iphone5SE适配*/
-		@media screen and (max-width: 320px) {
-			.d1{
-			height: 260px;
+		.drag-xialian,.drag-shanglian,.drag-hengpi,.drag-fu{
+			bottom: 5%;
+		}
+		.drag-xialian{
+			left: 20%;
+		}
+		.drag-shanglian{
+			left: 30%;
+		}
+		.drag-hengpi{
+			left: 40%;
+			width: 90px;
+		}
+		.drag-fu{
+			left: 70%;
 		}
 	</style>
 </head>
 
 <body class="lbg_img" style="background-image: url(img/GDL_img/Bg.png)">
-	<audio src="audio/bgm.mp3" id="vice" ></audio>
+	<section class="main-content" style="display: flex; flex-direction: column; justify-content: space-between;">
+		<audio src="audio/bgm.mp3" id="vice" autoplay></audio>
 	<audio id="au" src=""></audio>
-	<!--返回按钮+计时器-->
-	<header class="lbg_co_4 lw100 ldis_fle lpos_fix l10" style="height: 10%;justify-content: space-between;padding: 3% 0;">
-		<!--返回按键-->
-		<a href="index.html" class="ldis_blo lbg_co_2 ltex_cen lpos_rel" style="width: 18%;height: 78%;border: 6px #bdae9a solid; border-radius: 6px;margin-left: 3%;">
-			<img src="img/back.png" class="ldis_blo lpos_abs" style="right: 50%;top: 50%;margin-right: -20px;margin-top: -16px;" alt="返回" width="40px" height="32px"/>
-		</a>
-		<div class="lfont_1 lco_1 lh100 lpos_rel" style="width: 34%;text-align: center;margin-right: 3%;line-height: 100%;font-size: 60px;">
-			<b id="timeShow" class="ldis_blo lpos_abs" style="right: 50%;top: 50%;margin-right: -60px;margin-top: -30px;width: 120px;height: 60px;">10S</b>
-		</div>
-	</header>
-	<!--背景1-->
-	<div class="lpos_fix lbg_co_5 lw100" style="height: 50%;bottom: 0px;"></div>
-	<!--游戏组件-->
-	<div class="lpos_fix lw100 lbg_img d1" style="top: 24%;background-image: url(img/TDL_img/bg_1.png);">
-		<div class="content lmar_cer lh100" style="padding: 1px;height: 106%;margin-top: 28%;">
-			<div class="left lmar_cer ldis_fle" style="justify-content: space-between;align-content: space-around;flex-wrap: wrap;">
-				<!--上联-->
-			    <div class="box_3 ltex_cen lw100" style="opacity: 1;height: 10%;"><p class="box3"></p></div>
-				<!--左联-->
-				<div class="box_1" style="opacity: 1"><p class="box1"></p></div>
-				<!--福-->
-				<div class="box_4" style="opacity: 1"><p class="box4"></p><p class="box5"></p></div>
-				<!--左联-->
-				<div class="box_2" style="opacity: 1"><p class="box2"></p></div>
+		<!--返回按钮+计时器-->
+		<header class="lbg_co_4 lw100 ldis_fle l10" style="height: 10%;justify-content: space-between; padding: 2.5% 0;">
+			<!--返回按键-->
+			<a href="index.html" class="ldis_blo lbg_co_2 ltex_cen lpos_rel" style="width: 18%;height: 78%;border: 6px #bdae9a solid; border-radius: 6px;margin-left: 3%;">
+				<img src="img/back.png" class="ldis_blo lpos_abs" style="right: 50%;top: 50%;margin-right: -20px;margin-top: -16px;" alt="返回" width="40px" height="32px"/>
+			</a>
+			<div class="lfont_1 lco_1 lh100 lpos_rel" style="width: 34%;text-align: center;margin-right: 3%;line-height: 100%;font-size: 60px;">
+				<b id="timeShow" class="ldis_blo lpos_abs" style="right: 50%;top: 50%;margin-right: -60px;margin-top: -30px;width: 120px;height: 60px;">10S</b>
 			</div>
-       	   <div class="list lmar_cer ldis_fle" style="justify-content: space-between;align-content: space-around;flex-wrap: wrap;">
-            <em class="drag1" data-um="01" style><img src="img/TDL_img/left.png" width="24px;" alt=""/></em>
-            <em class="drag2" data-um="02" style><img src="img/TDL_img/right.png" width="24px;" alt=""/></em>
-            <em class="drag3" data-um="03" style><img src="img/TDL_img/top.png" width="86px;" alt=""/></em>
-            <em class="drag4" data-um="04" style><img src="img/TDL_img/fu.png" width="76px;" alt=""/></em>	
-           </div>
-		</div>
-	</div>
-	
-	
-	
-		<!--游戏开始弹窗-->
-	<div id="start" class="lpos_fix l10 lw100 lh100 ldis_non" style="top: 0px;left: 0px;">
-		<div class="lw100 lh100 lpos_fix lbg_co_black" style="opacity: 0.5"></div>
+		</header>
 		
-		<div class="lpos_fix lw100 ltex_cen" style="top: 6%;line-height: 60px;">
-			<img src="img/goodluck.png" alt="好运社" width="30%"/>
-			<br/>
+		<!--游戏主内容区-->
+		<div class="game-content">
+			<div class="door">
+				<div class="active-area">
+					<!--上联-->
+					<div class="duilian shanglian">
+						<div class="drag-area-sl"></div>
+					</div>
+					<!--下联-->
+					<div class="duilian xialian">
+						<div class="drag-area-xl"></div>
+					</div>
+					<!--横批-->
+					<div class="hengpi">
+						<div class="drag-area-hp"></div>
+					</div>
+					<!--福字-->
+					<div class="fuzi">
+						<div class="drag-area-fz"></div>
+					</div>
+					
+					
+				</div>
+			</div>
+			
+			<div class="bottom-bg"></div>
+
+			<img class="drag-img drag-xialian" src="img/TDL_img/right.png" alt="下联" width="25" />
+			<img class="drag-img drag-shanglian" src="img/TDL_img/left.png" alt="上联" width="25" />
+			<img class="drag-img drag-fu" src="img/TDL_img/fu.png" alt="福" width="70" />
+			<img class="drag-img drag-hengpi" src="img/TDL_img/top.png" alt="上联" />
+				
+		</div>
+			
+	</section>
+	
+	
+
+	<!--游戏开始弹窗-->
+	<div id="start" class="lpos_fix l10 lw100 lh100" style="top: 0px;left: 0px;">
+		<div class="lw100 lh100 lpos_fix lbg_co_black" style="opacity: 0.65"></div>
+		<div class="lpos_fix lw100 ltex_cen" style=" top:6%; display: flex;flex-direction: column; align-items: center; height: 80%; justify-content: space-between">
+			<img src="img/goodluck.png" alt="好运社" width="35%"/>
 			<img src="img/TDL_img/title.png" alt="" width="40%"/>
-			<br/>
-			<img src="img/TDL_img/text.png" alt="" width="70%"/>
-			<br/>
-			<img onClick="start()" src="img/start.png" alt="开始游戏" width="50%"/>
+			<img src="img/TDL_img/text.png" alt="" width="65%"/>
+			<img onClick="start()" src="img/start.png" alt="开始游戏" width="42%"/>
 		</div>
 	</div>
 	
@@ -139,103 +202,167 @@
 	<div id="end" class="lpos_fix l10 lw100 lh100 ldis_non">
 		
 	</div>
-
+	
 	<script>
 		var suc=0//成功次数
 		var time=9;
 		var timeOpen=true;
 		function start(){
 			$("#start").css({"display":"none"});
-			timer()
-			creaBoTimer=setInterval(function(){ creaBo() },2000)
+			timer();
+			//creaBoTimer=setInterval(function(){ creaBo() },2000)
 		}
+		function sucPD(){
+			if(suc==4){
+				selRaw(true,1)
+			}
+		}
+				
 		document.body.addEventListener('touchmove', function(e) {
     		e.preventDefault();
     	});
-		posArr:[p.top,p.left,sw,sh],  
-        var drag1 = new Drag({dragEle: '.drag1', tarEle: '.box_1', 
-                            onStart: function(e) {
-                               
-                            },
-                            onMove: function(e) {
+				
+		var p=$(".shanglian").offset();
+		var sw=$(".shanglian").outerWidth();
+		var sh=$(".shanglian").outerHeight();
+		var drag = new Drag({dragEle: '.drag-shanglian', 
+							  tarEle:'.shanglian', 
+							  //posArr：定位数组（需要将元素拖至的固定区域,顺序为top,left,width,height）注：tarEle与posArr设置一个即可，两个同时设置则以tarEle为主
+							  posArr:[p.top,p.left,sw,sh], 
+                              onStart: function(e) { 
+								  //console.log(e);
+								//this.dragEle.cssText+="width:30px;";
+								  e.style.cssText+="width:30px;";
+								
+                              },
+                              onMove: function(e) {
                                 //$(".drag1>img").css({"width":"6%"})
-                            }, 
-                            onMoveIn: function(e) {
-                                
-                            }, 
-                            onEnd: function(e) {
+								//e.innerHTML = "我在移动";
+                              }, 
+                              onMoveIn: function(e) {
+                                //console.log("我进来了");
+								//console.log(e);
+								 
+                              }, 
+                              onEnd: function(e) {
+								//console.log("哈哈");
 								au(2);
-								//e.style.cssText+="display:none;"
-                             	$(".drag1").css({"display":"none"})
-                             	$(".box1").html('<img src="img/TDL_img/left.png" alt="迎新春年年如意" width="100%"/>')
-                             	$(".box1").css({"border":"none"})
-                             	$(".box_1").css({"opacity":"1"})
-                            },                
+								  suc++;
+								  $(".shanglian").css({"border":"none"})
+								  $(".drag-shanglian").css({"display":"none"})
+								  $(".shanglian").css({"opacity":"1"})
+								  $(".shanglian").css({"background-image":"url(img/TDL_img/left.png)"})
+								  setTimeout('sucPD()',1500);//判断游戏输赢
+                             },                
                         });
-		var drag2 = new Drag({dragEle: '.drag2', tarEle: '.box_2', 
-                            onStart: function(e) {
-                               
-                            },
-                            onMove: function(e) {
-                                $(".drag2>img").css({"width":"6%"})
-                            }, 
-                            onMoveIn: function(e) {
-                                
-                            }, 
-                            onEnd: function(e) {
+		var px=$(".xialian").offset();
+		var swx=$(".xialian").outerWidth();
+		var shx=$(".xialian").outerHeight();
+		var drag = new Drag({dragEle: '.drag-xialian', 
+							  tarEle:'.xialian', 
+							  //posArr：定位数组（需要将元素拖至的固定区域,顺序为top,left,width,height）注：tarEle与posArr设置一个即可，两个同时设置则以tarEle为主
+							  posArr:[px.top,px.left,swx,shx], 
+                              onStart: function(e) { 
+								  //console.log(e);
+								//this.dragEle.cssText+="width:30px;";
+								  e.style.cssText+="width:30px;";
+								
+                              },
+                              onMove: function(e) {
+                                //$(".drag1>img").css({"width":"6%"})
+								//e.innerHTML = "我在移动";
+								   
+                              }, 
+                              onMoveIn: function(e) {
+                                //console.log("我进来了");
+								//console.log(e);
+								 
+                              }, 
+                              onEnd: function(e) {
+								//console.log("哈哈g");
 								au(2);
-								//e.style.cssText+="display:none;"
-                             	$(".drag2").css({"display":"none"})
-                             	$(".box2").html('<img src="img/TDL_img/right.png" alt="接鸿福步步登高" width="100%"/>')
-                             	$(".box2").css({"border":"none"})
-                             	$(".box_2").css({"opacity":"1"})
-                            },                
+								  suc++;
+								  $(".xialian").css({"border":"none"})
+								 $(".drag-xialian").css({"display":"none"})
+								  $(".xialian").css({"opacity":"1"})
+								  $(".xialian").css({"background-image":"url(img/TDL_img/right.png)"})
+								   setTimeout('sucPD()',1500);//判断游戏输赢
+                             },                
                         });
-		var drag3 = new Drag({dragEle: '.drag3', tarEle: '.box_3', 
-                            onStart: function(e) {
-                               
-                            },
-                            onMove: function(e) {
-                                $(".drag3>img").css({"width":"20%"})
-                            }, 
-                            onMoveIn: function(e) {
-                                
-                            }, 
-                            onEnd: function(e) {
+		var ph=$(".hengpi").offset();
+		var swh=$(".hengpi").outerWidth();
+		var shh=$(".hengpi").outerHeight();
+		var drag = new Drag({dragEle: '.drag-hengpi', 
+							  tarEle:'.hengpi', 
+							  //posArr：定位数组（需要将元素拖至的固定区域,顺序为top,left,width,height）注：tarEle与posArr设置一个即可，两个同时设置则以tarEle为主
+							  posArr:[ph.top,ph.left,swh,shh], 
+                              onStart: function(e) { 
+								  //console.log(e);
+								//this.dragEle.cssText+="width:30px;";
+								  e.style.cssText+="width:30px;";
+								
+                              },
+                              onMove: function(e) {
+                                //$(".drag1>img").css({"width":"6%"})
+								//e.innerHTML = "我在移动";
+								  $(".drag-hengpi").css({"width":"90px"})
+                              }, 
+                              onMoveIn: function(e) {
+                                //console.log("我进来了");
+								//console.log(e);
+								 
+                              }, 
+                              onEnd: function(e) {
+								//console.log("哈哈g");
 								au(2);
-								//e.style.cssText+="display:none;"
-                             	$(".drag3").css({"display":"none"})
-                             	$(".box3").html('<img src="img/TDL_img/top.png" alt="伊往无前" height="1%"/>')
-                             	$(".box3").css({"border":"none"})
-                             	$(".box_3").css({"opacity":"1"})
-                            },                
+								  suc++;
+								  $(".hengpi").css({"border":"none"})
+								 $(".drag-hengpi").css({"display":"none"})
+								  $(".hengpi").css({"opacity":"1"})
+								  $(".hengpi").css({"background-image":"url(img/TDL_img/top.png)"})
+								   setTimeout('sucPD()',1500);//判断游戏输赢
+                             },                
                         });
-		var drag4 = new Drag({dragEle: '.drag4', tarEle: '.box_4', 
-                            onStart: function(e) {
-                               
-                            },
-                            onMove: function(e) {
-                                $(".drag4>img").css({"width":"20%"})
-                            }, 
-                            onMoveIn: function(e) {
-                                
-                            }, 
-                            onEnd: function(e) {
+		var pf=$(".fuzi").offset();
+		var swf=$(".fuzi").outerWidth();
+		var shf=$(".fuzi").outerHeight();
+		var drag = new Drag({dragEle: '.drag-fu', 
+							  tarEle:'.fuzi', 
+							  //posArr：定位数组（需要将元素拖至的固定区域,顺序为top,left,width,height）注：tarEle与posArr设置一个即可，两个同时设置则以tarEle为主
+							  posArr:[pf.top,pf.left,swf,shf], 
+                              onStart: function(e) { 
+								  //console.log(e);
+								//this.dragEle.cssText+="width:30px;";
+								  e.style.cssText+="width:30px;";
+								
+                              },
+                              onMove: function(e) {
+                                //$(".drag1>img").css({"width":"6%"})
+								//e.innerHTML = "我在移动";
+								  $(".drag-fu").css({"width":"70px"})
+                              }, 
+                              onMoveIn: function(e) {
+                                //console.log("我进来了");
+								//console.log(e);
+								 
+                              }, 
+                              onEnd: function(e) {
+								//console.log("哈哈g");
 								au(2);
-								//e.style.cssText+="display:none;"
-                             	$(".drag4").css({"display":"none"})
-                             	$(".box4").html('<img src="img/TDL_img/fu.png" width="100%" alt=""/>')
-                             	$(".box5").html('<img src="img/TDL_img/fu.png" width="100%" alt=""/>')
-                             	$(".box4").css({"border":"none"})
-                             	$(".box5").css({"border":"none"})
-                             	$(".box_4").css({"opacity":"1"})
-                            },                
+								  suc++;
+								    $(".fuzi").css({"border":"none"})
+								 $(".drag-fu").css({"display":"none"})
+								  $(".fuzi").css({"opacity":"1"})
+								  $(".fuzi").css({"background-image":"url(img/TDL_img/fu.png)"})
+								   setTimeout('sucPD()',1500);//判断游戏输赢
+                             },                
                         });
-		
-		
-		function timeOut(){
-			if(time==-1){selRaw(false);}
+	//	console.log(drag1);
+	function timeOut(){
+			if(time==-1){selRaw(false,0);}
 		}
+	
 	</script>
+	
 </body>
 </html>

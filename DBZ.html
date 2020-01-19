@@ -30,9 +30,9 @@
 	<!--返回按钮+计时器-->
 	<header class="lbg_co_4 lw100 ldis_fle lpos_fix l10" style="height: 10%;justify-content: space-between;padding: 3% 0;">
 		<!--返回按键-->
-		<a href="index.html" class="ldis_blo lbg_co_2 ltex_cen lpos_rel" style="width: 18%;height: 78%;border: 6px #bdae9a solid; border-radius: 6px;margin-left: 3%;">
+		<div onClick="Achang(0)" class="ldis_blo lbg_co_2 ltex_cen lpos_rel" style="width: 18%;height: 78%;border: 6px #bdae9a solid; border-radius: 6px;margin-left: 3%;">
 			<img src="img/back.png" class="ldis_blo lpos_abs" style="right: 50%;top: 50%;margin-right: -20px;margin-top: -16px;" alt="返回" width="40px" height="32px"/>
-		</a>
+		</div>
 		<div class="lfont_1 lco_1 lh100 lpos_rel" style="width: 34%;text-align: center;line-height: 100%;font-size: 36px;">
 			<b id="nubShow" class="ldis_blo lpos_abs" style="right: 50%;bottom: 10%;margin-right: -30px;width: 60px;height: 36px;">0/15</b>
 		</div>
@@ -140,7 +140,7 @@
 				if(suc==15){
 					clearInterval(creaBoTimer);
 					timeOpen=false;
-				   		setTimeout('selRaw(true);',1000)
+				   		setTimeout('selRaw(true,3);',1000)
 				   }
 			}
 		}
@@ -160,7 +160,7 @@
 				if(suc==15){
 					clearInterval(creaBoTimer);
 					timeOpen=false;
-				   		setTimeout('selRaw(true);',1000)
+				   		setTimeout('selRaw(true,3);',1000)
 				   }
 			}
 		}
@@ -180,7 +180,7 @@
 				if(suc==15){
 					clearInterval(creaBoTimer);
 					timeOpen=false;
-				   		setTimeout('selRaw(true);',1000)
+				   		setTimeout('selRaw(true,3);',1000)
 				   }
 			}
 		}
@@ -232,7 +232,7 @@
 		}
 		
 		function timeOut(){
-			if(time==-1){selRaw(false);}
+			if(time==-1){selRaw(false,0);}
 		}
 
 		
