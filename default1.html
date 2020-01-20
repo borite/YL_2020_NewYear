@@ -6,11 +6,15 @@
 	 <title>伊利好运社</title>
 	 <link href="css/lsj.css" rel="stylesheet"/>
 	 <script src="js/jquery-3.3.1.min.js"></script>
-	 <script src="js/common.js"></script>
+	 <script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+	 <script src="js/common.js?v=1"></script>
 	 <script>
 		$(function(){
 			var isFirst=true;
 			var _code=GetQueryString("code");
+			var u = navigator.userAgent;
+			var _isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+			initWxConfig(_isiOS,'bgm_audio');
 			console.log(_code);
 			//获取openID
 			$.get("https://customer.imotstudio.net/yl2020NewYear/api/Game/CheckOpenID",{code:_code},function(data){
@@ -47,7 +51,7 @@
 </head>
  
 <body class="lbg_img" style="background-image: url(img/HCJ_img/bg.png)">
-	<audio src="audio/bg.mp3" autoplay loop></audio>
+	<audio id="bgm_audio" src="audio/bg.mp3" autoplay loop></audio>
 	
 	<!--logo-->
 	<div class="lpos_fix" style="width: 19%;top: 4%;left: 6%"><img src="img/logo.png" alt="logo" width="100%"/></div>

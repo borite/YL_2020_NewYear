@@ -14,7 +14,7 @@ function GetQueryString(name) {
 
 
 function initWxConfig(isIOS,audioID){
-	 $.get("http://www.bigxia.cn/wechat/api/wxticket.ashx", { "cur_url": window.location.href }).done(function (res) {
+	 $.get("https://www.bigxia.cn/wechat/api/wxticket.ashx", { "cur_url": window.location.href }).done(function (res) {
 		 	
                 var rJson = JSON.parse(res);
 		 		console.log(rJson);
@@ -27,6 +27,11 @@ function initWxConfig(isIOS,audioID){
                     jsApiList: ["updateAppMessageShareData", "updateTimelineShareData"] // 必填，需要使用的JS接口列表
                 });
                 wx.ready(function () {		
+					
+					if(isIOS){
+						document.getElementById(audioID).play();
+					}
+
                     //alert("微信接口初始化完成");
                     wx.updateAppMessageShareData({
                         title: '伊利好运社|潘帅送给“鼠”于你的祝福', // 分享标题

@@ -1,12 +1,14 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
+	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,user-scalable=no,inital-scale=1"/>
 	<title>信息登录</title>
 	<link href="css/lsj.css" rel="stylesheet"/>
 	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="js/lsj.js"></script>
+	<script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+	<script src="js/common.js?v=1"></script>
 	<style>
 		.d1{
 			height: 58px;
@@ -96,7 +98,9 @@
 		<img src="img/submit.png" onClick="submit()" width="36%" alt="登录"/>
 	</section>
 	<script>
-	
+		var u = navigator.userAgent;
+		var _isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+	    initWxConfig(_isiOS,"bgm");
 	//提交
 		function submit(){
 			//用户电话
