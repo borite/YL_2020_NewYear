@@ -6,11 +6,12 @@
 <title>伊利好运社</title>
 	<link href="css/lsj.css" rel="stylesheet"/>
 	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
 	<script type="text/javascript" src="js/lsj.js"></script>
+	<script src="js/common.js?v=1"></script>
 	<style>
 		.a{width: 26%}
-		
-		
+
 		footer{height: 40%;}
 		
 		.scene{	
@@ -57,17 +58,17 @@
 </head>
 
 <body class="lbg_img" style="background-image: url(img/HCJ_img/bg.png)">
-	<audio src="audio/bg.mp3" autoplay></audio>
+	<audio id="bgm_audio" src="audio/bg.mp3" autoplay></audio>
 	
 
 	<!--logo-->
 	<div class="lpos_fix" style="width: 19%;top: 4%;left: 6%"><img src="img/logo.png" alt="logo" width="100%"/></div>
 	<header class="lmar_cer" style="width: 62%;margin-top: 14%;line-height: 40px;">
-		<img id="blogo" src="img/goodluck.png" alt="伊利好运社" width="100%"/>
+		<img id="blogo" src="img/goodluck.png" alt="伊利好运社" width="72%" style="margin-left: 14%"/>
 	</header>
 	<!--游戏选择场景-->
 	<section id="play_scene" class="scene" style="display: none;">
-		<img src="img/intraduction.png" alt="游戏规则" width="94%" style="margin: 1rem auto; display: block;"/>
+		<img src="img/intraduction.png" alt="游戏规则" width="85%" style="margin: 1rem auto; display: block;"/>
 		<footer id="but" class="lw100 ldis_fle lmar_cer lbg_co_5" style="bottom: 0px;justify-content: space-around; width: 70%;border-radius: 14px;justify-content: space-around;align-content: space-around;flex-wrap: wrap-reverse;border: 14px #E9DAC1 solid;">
 			<div onClick="Achang(7)" class="ltex_cen ldis_blo a" style="width:100%;"><img src="img/fd.png" alt="福袋" width="40%"/></div>
 			<div onClick="Achang(1)" class="ltex_cen ldis_blo a">
@@ -119,7 +120,9 @@
 	</section>
 	
 	<script>
-		
+		var u = navigator.userAgent;
+		var _isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+		initWxConfig(_isiOS,'bgm_audio');
 		var n_first=localStorage.getItem('noFirst');
 		
 		if(n_first==null){

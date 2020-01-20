@@ -6,10 +6,11 @@
 <title>我的福袋</title>
 	<link href="css/lsj.css" rel="stylesheet"/>
 	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-	<script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>	
 	<script type="text/javascript" src="js/lsj.js"></script>
-	<script src="js/common.js?v=1"></script>
 	<style>
+		.d8{margin-top: 2%;}
+		
+		.d7{border:2px black solid;}
 		
 		#loading{
 			position: fixed;
@@ -52,27 +53,26 @@
 			-webkit-appearance: none;
 		}
 	
-		footer{height: 44%; width: 80%}
+		footer{height: 44%;
+		width: 80%}
 		/*iphone6适配*/
 		@media screen and (max-width: 376px) {
-			#mate{
-				width: 260px;
-				margin-left: -130px;
-			}
+		#mate{
+			width: 260px;
+			margin-left: -130px;
 		}
 		/*安卓适配*/
 		@media screen and (max-width: 360px) {
-			#mate{
-				width: 240px;
-				margin-left: -120px;
-			}
-			p{
-				width: 26%;
-			}
-
-			footer{height: 44%;}
+		#mate{
+			width: 240px;
+			margin-left: -120px;
 		}
-		
+		p{
+			width: 26%;
+		}
+	
+		footer{height: 44%;}
+		}
 		/*iphone5SE适配*/
 		@media screen and (max-width: 320px) {
 			#but{
@@ -86,62 +86,52 @@
 				width:72%;}
 		}
 			
-		#but b{
-			font-size: 0.75rem;
-		}
+			#but b{
+				font-size: 0.75rem;
+			}
 		
 
-		.fu-text{
-			 font-size: 2rem;
-			 font-size: 1.1rem;
-			 color: #E5B900;
-			 text-shadow:#000 1px 0 0,#000 0 1px 0,#000 -1px 0 0,#000 0 -1px 0;
-			 text-align: center;
-		     position: absolute;
-			 bottom: 0;
-			 width: 100%;
-		}
 		
 	</style>
 </head>
 
 <body class="lbg_img" style="background-image: url(img/HCJ_img/bg.png)">
-	<audio id="bgm_audio" src="audio/bg.mp3" autoplay loop></audio>
-	<audio id="vice" src="" autoplay></audio>
+	<audio id="vice" src="audio/bg.mp3" autoplay></audio>
 	<audio id="au" src=""></audio>
 	<!--返回按钮-->
-	<header class="lbg_co_4 lw100 ldis_fle lpos_fix l10" style="height: 7%;justify-content: space-between; padding: 5px 0; padding-bottom: 10px;">
+	<header class="lbg_co_4 lw100 ldis_fle lpos_fix l10" style="height: 10%;justify-content: space-between;padding: 3% 0;">
 		<!--返回按键-->
 		<div onClick="Achang(0)" class="ldis_blo lbg_co_2 ltex_cen lpos_rel" style="width: 18%;height: 78%;border: 6px #bdae9a solid; border-radius: 6px;margin-left: 3%;">
 			<img src="img/back.png" class="ldis_blo lpos_abs" style="right: 50%;top: 50%;margin-right: -20px;margin-top: -16px;" alt="返回" width="40px" height="32px"/>
 		</div>
+	
 	</header>
-	<!--<div class="lw100" style="height: 5%;"></div>-->
-	<section class="ltex_cen lpos_rel d1" style="margin-top: 20px; position: relative; height: 40%;">
-		<img onClick="raward()" src="img/fu_img/fu(new).png" alt="" width="60%" style="display: block; position: absolute; left: 20%;"/>
+	<div class="lw100" style="height: 5%;"></div>
+	<section class="ltex_cen lpos_rel d1">
+		<img onClick="raward()" src="img/fu_img/fu(new).png" alt="" width="60%"/>
 <!--		<img src="img/fu_img/but.png" width="110px" class="ldis_blo lpos_abs" style="bottom: -5%;left: 50%;margin-left: -55px;" alt=""/>-->
 		
 	</section>
 	
 	<footer id="but" class="ldis_fle lmar_cer lbg_co_5" style="bottom: 0px;justify-content: space-around;border-radius: 14px;justify-content: space-around;align-content: space-around;flex-wrap: wrap;border: 14px #E9DAC1 solid;margin-top: 8%;">
 		<p id="c1" onClick="share(0)" class="ltex_cen ldis_blo">
-			<img src="img/fu_img/card1.png" alt="鼠你富" width="85%"/><br/>
-			<b>属你富X0</b>
+			<img src="img/fu_img/card1.png" alt="鼠你富" width="100%"/><br/>
+			<b>属你富卡X0</b>
 		</p>
-		<p id="c2" onClick="share(1)" class="ltex_cen ldis_blo"><img src="img/fu_img/card2.png" alt="鼠你富" width="85%"/><br/>
-			<b>属你美X0</b>
+		<p id="c2" onClick="share(1)" class="ltex_cen ldis_blo"><img src="img/fu_img/card2.png" alt="鼠你富" width="100%"/><br/>
+			<b>属你美卡X0</b>
 		</p>
-		<p id="c3" onClick="share(2)" class="ltex_cen ldis_blo"><img src="img/fu_img/card3.png" alt="鼠你富" width="85%"/><br/>
-			<b>属你强X0</b>
+		<p id="c3" onClick="share(2)" class="ltex_cen ldis_blo"><img src="img/fu_img/card3.png" alt="鼠你富" width="100%"/><br/>
+			<b>属你强卡X0</b>
 		</p>
-		<p id="c4" onClick="share(3)" class="ltex_cen ldis_blo"><img src="img/fu_img/card4.png" alt="鼠你富" width="85%"/><br/>
-			<b>属你乐X0</b>
+		<p id="c4" onClick="share(3)" class="ltex_cen ldis_blo"><img src="img/fu_img/card4.png" alt="鼠你富" width="100%"/><br/>
+			<b>属你乐卡X0</b>
 		</p>
-		<p id="c5" onClick="share(4)" class="ltex_cen ldis_blo"><img src="img/fu_img/card5.png" alt="鼠你富" width="85%"/><br/>
-			<b>属你甜X0</b>
+		<p id="c5" onClick="share(4)" class="ltex_cen ldis_blo"><img src="img/fu_img/card5.png" alt="鼠你富" width="100%"/><br/>
+			<b>属你甜卡X0</b>
 		</p>
-		<p id="c6" onClick="share(5)" class="ltex_cen ldis_blo"><img src="img/fu_img/card6.png" alt="鼠你富" width="85%"/><br/>
-			<b>尊重卡X0</b>
+		<p id="c6" onClick="share(5)" class="ltex_cen ldis_blo"><img src="img/fu_img/card6.png" alt="鼠你富" width="100%"/><br/>
+			<b>万能卡X0</b>
 		</p>
 		
 	</footer>
@@ -150,9 +140,10 @@
 	<div id="end" class="lpos_fix l10 lw100 lh100 ldis_non">
 		
 	</div>
-
-	<div id="loading">请稍后...</div>
 	
+	
+	
+	<div id="loading">请稍后...</div>
 	<!--查看中奖信息弹窗-->
 	<section id="raw" class="lpos_fix l10 lw100 lh100 ldis_non" style="top: 0px;left: 0px;">
 		<div class="lw100 lh100 lpos_fix lbg_co_black" style="opacity: 0.5"></div>
@@ -177,118 +168,86 @@
 		</div>
 	</section>
 	
-	
-	
 	<script>
 		//卡牌数量
 		var cout1=0,cout2=0,cout3=0,cout4=0,cout5=0,cout6=0;
-		var raward=false//是否可以开奖
+		var raward=false;//是否可以开奖
+		var userOpenID="";
+		var message_val="",address_val="包头市青山区",name_val="吕少杰",phone_val="15247256461";//中奖信息获取
 		
-		var userOpenID;
-		
-		var message_val="",address_val="",name_val="",phone_val="";//中奖信息获取
 		
 		$(function(){
-			var u = navigator.userAgent;
-			var _isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-			initWxConfig(_isiOS,'bgm_audio');
-			var uinfo=localStorage.getItem('userInfo');
-			var uopenID=JSON.parse(uinfo);
-			userOpenID=uopenID.Data.OpenID;
-			$.ajax("https://customer.imotstudio.net/yl2020NewYear/api/Game/GetInfo",{
-				type:"get",
-				cache:false,
-				data:{OpenID:uopenID.Data.OpenID},
-				beforeSend:function(){
-					$("#loading").css('display','block');
-				},
-				success:function(res){
-					console.log(res);
-				    if(res.Code==200){
-						cout1=res.Data.c1snf;
-						cout2=res.Data.c2snm;
-						cout3=res.Data.c3snq;
-						cout4=res.Data.c4snl;
-						cout5=res.Data.c5snt;
-						cout6=res.Data.c6zzk;
-						showCout();
-						rawardRed();//福是否集齐
-						cardEist();//有福的地方显示图片
-						if(res.Data.ISChou==true){
-							
-							address_val=res.Data.Address;
-							name_val=res.Data.Name;
-							phone_val=res.Data.Phone;
-							var pID=1;
-							if(res.Data.PrizeID==3){
-								pID=2;
-							}
-							if(res.Data.PrizeID==9){
-								message_val=$.trim(res.Data.aiqiyiKey);
-								pID=3;
-							}
-							
-							getaward(true,pID);//get是否获奖，getnub获得几等奖
-						}
-						
-					}
-				},
-				complete:function(res){
-					$("#loading").css('display','none');
-				}
-			});
-
+			
+				//var uinfo=localStorage.getItem('userInfo');
+//				var uopenID=JSON.parse(uinfo);
+//				userOpenID=uopenID.Data.OpenID;
+//				$.ajax("https://customer.imotstudio.net/yl2020NewYear/api/Game/GetInfo",{
+//					type:"get",
+//					cache:false,
+//					data:{OpenID:uopenID.Data.OpenID},
+//					beforeSend:function(){
+//						$("#loading").css('display','block');
+//					},
+//					success:function(res){
+//						console.log(res);
+//						if(res.Code==200){
+//							cout1=res.Data.c1snf;
+//							cout2=res.Data.c2snm;
+//							cout3=res.Data.c3snq;
+//							cout4=res.Data.c4snl;
+//							cout5=res.Data.c5snt;
+//							cout6=res.Data.c6zzk;
+//							showCout();
+//							rawardRed();//福是否集齐
+//							cardEist();//有福的地方显示图片
+//						}
+//					},
+//					complete:function(res){
+//						$("#loading").css('display','none');
+//					}
+//				});
+			getaward(true,1)//get是否获奖，getnub获得几等奖
+			
 		});
 		
-
+		
+		
 		//获取卡片数量"o0nGN1TwsUk8Ec64I12TOWLg3dro"
 		//$.ajax("https://customer.imotstudio.net/yl2020NewYear/api/Game/GetInfo",{OpenID:})
 		
-		function getaward(get,getnub){//get是否获奖，getnub获得几等奖
-			if(get==true){//获奖后显示界面
-					$(".d1").html('<img src="img/fu_img/fu(new).png" alt="" width="60%" style="display: block; position: absolute; left: 20%;"/>\
-								   <img onclick="getraward('+getnub+')" src="img/fu_img/message.png" alt="" width="60%" style="display: block; position: absolute; left:20%; bottom:0;" />');
-				   }
-		}
-
+	function getaward(get,getnub){//get是否获奖，getnub获得几等奖
+		if(get==true){//获奖后显示界面
+				$(".d1").html('<img onclick="getraward('+getnub+')" src="img/fu_img/message.png" alt="" width="60%"/>');
+			   }
+	}
 		
-		//判断卡牌是否集齐，开奖
-		function rawardRed(){
+		
+		function rawardRed(){//判断卡牌是否集齐，开奖
 			if(cout1>0&&cout2>0&&cout3>0&&cout4>0&&cout5>0){
 				raward=true;
 				$(".d1").html('<img onclick="raward1()" src="img/fu_img/fu.png" alt="" width="60%"/>\
 								<div id="mate" class="lpos_abs ltex_cen ldis_fle" style="bottom: -14%;left: 50%;" alt="">\
 									<div style="width: 23%"><img id="img1" src="img/fu_img/mate.png" alt="" width="100%"/></div>\
-									<div class="lpos_rel" style="width: 77%"><img class="lpos_abs ldis_blo" style="bottom: 4%;left: 3%" id="img2" src="img/fu_img/text7.png" alt="" width="90%"/></div>\
+									<div class="lpos_rel" style="width: 77%"><img class="lpos_abs ldis_blo" style="bottom: 2%;left: 3%" id="img2" src="img/fu_img/text7.png" alt="" width="90%"/></div>\
 								</div>');
 			   
-			}else{
-				raward=false;
-				$(".d1").html('<img onClick="raward()" src="img/fu_img/fu(new).png" alt="" width="60%" style="display: block; position: absolute; left: 20%;"/><div class="fu-text">集齐卡片，召唤奖品哦~</div>')
 			}
 		}
-		
-		
 		
 		function raward1(){
 			if(raward==true){
 				window.location.href="raward.html";
 			}
 		}
-		
-		
 		//显示卡牌数量
 		function showCout(){
-			$("#c1>b").text("鼠你富X"+cout1);
-			$("#c2>b").text("鼠你美X"+cout2);
-			$("#c3>b").text("鼠你强X"+cout3);
-			$("#c4>b").text("鼠你乐X"+cout4);
-			$("#c5>b").text("鼠你甜X"+cout5);
-			$("#c6>b").text("尊重卡X"+cout6);
+			$("#c1>b").text("属你富卡X"+cout1);
+			$("#c2>b").text("属你美卡X"+cout2);
+			$("#c3>b").text("属你强卡X"+cout3);
+			$("#c4>b").text("属你乐卡X"+cout4);
+			$("#c5>b").text("属你甜卡X"+cout5);
+			$("#c6>b").text("万能卡X"+cout6);
 		}
-		
-		
-		
 		//判断卡片有无
 		function cardEist(){
 			for(var i=0;i<5;i++){
@@ -336,23 +295,20 @@
 				break;
 			}
 		}
-		
-		
-		
 		function det(n){
 			au(2)
 			if(n==6){
 			   $("#end").html('<div class="lbg_co_7 lw100 lh100 lpos_fix lbg_img" style="background-image: url(img/fu_img/bg.png);top: 0;"></div>\
 									<div id="win" class="lpos_fix ltex_cen lh100" style="top: 14%;">\
-									<img src="img/fu_img/mate.png" alt="" width="14%"/>\
-									<img class="vice" onClick="vice('+n+')" src="img/fu_img/pint.png" alt="" width="50%"/>\
+									<img src="img/fu_img/mate.png" alt="" width="16%"/>\
+									<img class="vice" onClick="vice('+n+')" src="img/fu_img/pint.png" alt="" width="58%"/>\
 									<br/>\
-									<img src="img/fu_img/card'+n+'.png" alt="" width="50%"/>\
+									<img src="img/fu_img/card'+n+'.png" alt="" width="64%"/>\
 									<br/>\
 									<img ontouchend="chang()" src="img/fu_img/chang.png" alt="兑换" width="24%"/>\
 								</div>\
 									<header class="lw100 ldis_fle lpos_fix l10" style="height: 10%;justify-content: space-between;padding: 3% 0;top:0">\
-									<div onClick="Achang(7)" class="ldis_blo lbg_co_2 ltex_cen lpos_rel" style="width: 18%;height: 78%;border: 6px #bdae9a solid; border-radius: 6px;margin-left: 3%;">\
+									<div onClick="Achang(0)" class="ldis_blo lbg_co_2 ltex_cen lpos_rel" style="width: 18%;height: 78%;border: 6px #bdae9a solid; border-radius: 6px;margin-left: 3%;">\
 										<img src="img/back.png" class="ldis_blo lpos_abs" style="right: 50%;top: 50%;margin-right: -20px;margin-top: -16px;" alt="返回" width="40px" height="32px"/>\
 									</div>\
 								</header>');
@@ -360,15 +316,15 @@
 			   }else{
 					$("#end").html('<div class="lbg_co_7 lw100 lh100 lpos_fix lbg_img" style="background-image: url(img/fu_img/bg.png);top: 0;"></div>\
 						<div id="win" class="lpos_fix ltex_cen lh100" style="top: 14%;">\
-						<img src="img/fu_img/mate.png" alt="" width="14%"/>\
-						<img class="vice" onClick="vice('+n+')" src="img/fu_img/pint.png" alt="" width="50%"/>\
+						<img src="img/fu_img/mate.png" alt="" width="16%"/>\
+						<img class="vice" onClick="vice('+n+')" src="img/fu_img/pint.png" alt="" width="58%"/>\
 						<br/>\
-						<img src="img/fu_img/card'+n+'.png" alt="" width="50%"/>\
+						<img src="img/fu_img/card'+n+'.png" alt="" width="64%"/>\
 						<br/>\
 						<img onClick="shareNam('+n+')" src="img/fu_img/give.png" alt="赠卡" width="24%"/>\
 					</div>\
 						<header class="lw100 ldis_fle lpos_fix l10" style="height: 10%;justify-content: space-between;padding: 3% 0;top:0">\
-						<div onClick="Achang(7)" class="ldis_blo lbg_co_2 ltex_cen lpos_rel" style="width: 18%;height: 78%;border: 6px #bdae9a solid; border-radius: 6px;margin-left: 3%;">\
+						<div onClick="Achang(0)" class="ldis_blo lbg_co_2 ltex_cen lpos_rel" style="width: 18%;height: 78%;border: 6px #bdae9a solid; border-radius: 6px;margin-left: 3%;">\
 							<img src="img/back.png" class="ldis_blo lpos_abs" style="right: 50%;top: 50%;margin-right: -20px;margin-top: -16px;" alt="返回" width="40px" height="32px"/>\
 						</div>\
 						</header>')
@@ -377,7 +333,7 @@
 		
 		function vice(nub){
 			$("#vice").attr("src",'audio/vice_'+nub+'.mp3')
-			var player = $("#vice")[0]; /*jquery对象转换成js对象*/
+			 var player = $("#vice")[0]; /*jquery对象转换成js对象*/
 			player.play();
 			$('.vice').attr("src","img/fu_img/text"+nub+'.png');
 
@@ -398,7 +354,12 @@
 						<br/>\
 						<br/>\
 						<img src="img/fu_img/conGive.png" onClick="sub('+nub+')" alt="确认赠卡" width="30%"/>\
-					</div>	')
+					</div>\
+<header class="lw100 ldis_fle lpos_fix l10" style="height: 10%;justify-content: space-between;padding: 3% 0;top:0">\
+									<div onClick="Achang(0)" class="ldis_blo lbg_co_2 ltex_cen lpos_rel" style="width: 18%;height: 78%;border: 6px #bdae9a solid; border-radius: 6px;margin-left: 3%;">\
+										<img src="img/back.png" class="ldis_blo lpos_abs" style="right: 50%;top: 50%;margin-right: -20px;margin-top: -16px;" alt="返回" width="40px" height="32px"/>\
+									</div>\
+								</header>')
 		}
 		//赠卡信息提交
 		///////////////
@@ -515,7 +476,6 @@
 
 		}
 		
-		//获取中奖纪录
 		function getraward(nub){
 					$("#raw").css({"display":"block"});
 					$(".d3").attr("src","img/raward/rawTest"+nub+".png")
@@ -536,7 +496,6 @@
 		function confimR(){
 			$("#raw").css({"display":"none"});
 		}
-		
 	</script>
 </body>
 </html>

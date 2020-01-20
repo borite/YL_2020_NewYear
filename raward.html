@@ -97,6 +97,7 @@
 			margin-left: -50px;
 			top: 50%;
 			display: none;
+			z-index: 99999;
 		}
 	</style>
 </head>
@@ -157,14 +158,12 @@
 				
 				<img class="d3" src="img/raward/rawTest1.png" alt="" width="76%"/>
 				<div class="d2">
-					
 				</div>
-				<br/>
 				<img class="d4" src="img/raward/rawTest12d.png" alt="" width="76%"/>
 				
 			</div>
-			<div class="d1 " style="">
-				<img src="img/raward/confim.png" onClick="confim()" alt="确定" width="30%"/>
+			<div class="d1" style="">
+				<img src="img/raward/confim.png" ontouchstart="confim()" alt="确定" width="30%" style="display: block; margin: 0 auto;"/>
 			</div>
 		
 		</div>
@@ -272,6 +271,8 @@
 					alert("请输入您的收货地址");
 					return;
 				}
+				
+				//$("#loading").css('display','block');
 				$.ajax({
 						type: "PUT",
 						url: "https://customer.imotstudio.net/yl2020NewYear/api/Game/UpDateAddress",
@@ -284,9 +285,7 @@
 							console.log(res);
 							$(".d6").html('<div class="ltex_cen lmar_cer" style="margin-top: 30%;width: 80%;">\
 												<img src="img/raward/after.png" alt="好运社" width="100%"/>\
-												<br/>\
-												<br/>\
-												<img src="img/raward/share.png" onClick="share()" alt="立即分享" width="40%"/>\
+												<img src="img/raward/share.png" ontouchstart="share()" alt="立即分享" width="40%"/>\
 											</div>');
 							
 						},
@@ -298,9 +297,7 @@
 			}else{
 				$(".d6").html('<div class="ltex_cen lmar_cer" style="margin-top: 30%;width: 80%;">\
 									<img src="img/raward/after.png" alt="好运社" width="100%"/>\
-									<br/>\
-									<br/>\
-									<img src="img/raward/share.png" onClick="share()" alt="立即分享" width="40%"/>\
+									<img src="img/raward/share.png" ontouchstart="share()" alt="立即分享" width="40%"/>\
 							   </div>');
 			}
 
@@ -310,8 +307,7 @@
 			$("#raw").append('<div class="lw100 lh100 lpos_fix lbg_co_black l10" style="opacity: 0.5;top:0;"></div>\
 								<div class="ltex_cen l10 lpos_fix" style="width: 80%;top: 0;right: 0;">\
 								<img src="img/raward/share_in.png" alt="点击右上角分享" width="100%"/>\
-								<br/>\
-								<img src="img/raward/share_btn.png" onClick="back()" alt="我知道了" width="40%"/>\
+								<img src="img/raward/share_btn.png" ontouchstart="back()" alt="我知道了" width="40%"/>\
 							</div>');
 		}
 		function back(){
