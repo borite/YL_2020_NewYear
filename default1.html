@@ -16,8 +16,10 @@
 			var _isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
 			initWxConfig(_isiOS,'bgm_audio');
 			console.log(_code);
+			$("#loading").css('display','block');
 			//获取openID
 			$.get("https://customer.imotstudio.net/yl2020NewYear/api/Game/CheckOpenID",{code:_code},function(data){
+				$("#loading").css('display','none');
 				//uid=JSON.parse(data.openID);
 				console.log(data);	
 				localStorage.clear();
@@ -32,7 +34,19 @@
 				if(data.Code==400){
 					top.location="default.html";
 				}
-			});		
+			});
+			
+			
+			$("#to_step2").on('touchstart',function(){
+				$(".step").css('display','none');
+				$("#sintro2").css('display','block');
+			})
+			
+			$("#to_step3").on('touchstart',function(){
+				$(".step").css('display','none');
+				$("#no_first").css('display','block');
+			})
+			
 		})
 	
 	 </script>
@@ -56,8 +70,6 @@
 			</a>
 		</div>
 	</header>
-	
-
-	
+	<div id="loading">请稍后...</div>
 </body>
 </html>

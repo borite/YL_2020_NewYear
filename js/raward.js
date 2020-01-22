@@ -1,6 +1,4 @@
 // JavaScript Document
-
-
 //游戏结束Handle
 //e---true胜利，false失败
 //gcode  1-贴春联 2-糖葫芦 3-点爆竹 4-贺春节 5-挂灯笼
@@ -14,6 +12,9 @@ function selRaw(e,gcode){
 	var a=JSON.parse(userInfo);
 	console.log(JSON.parse(userInfo));
 	var d=new Date();
+	
+	var html_loading='<div id="loading" style="display:block">请稍后...</div>';
+	$('body').append(html_loading);
 	//uOpenID--用户微信OpenID  g
 	//1-贴春联 2-糖葫芦 3-点爆竹 4-贺春节 5-挂灯笼
     $.get("https://customer.imotstudio.net/yl2020NewYear/api/Game/ChouCard",{
@@ -21,6 +22,7 @@ function selRaw(e,gcode){
 		GameType:gcode,
 		t:d.getTime()
 	}).done(function(res){
+		$("#loading").remove();
 		console.log(res);
 		var c=res.Code;
 		if(c==200){
@@ -58,72 +60,35 @@ function selRaw(e,gcode){
 		if(c==204){
 			viceBG(0);
 			$("#end").html('<div class="lw100 lh100 lpos_fix lbg_co_black" style="opacity: 0.5;top: 0;"></div>\
-				<div class="lpos_fix lw100 ltex_cen" style="top: 6%;line-height: 60px;">\
-					<img src="img/goodluck.png" alt="好运社" width="30%"/>\
-					<br/>\
-					<img src="img/win.png" alt="" width="40%"/>\
-					<br/>\
-					<img src="img/wintest.png" alt="" width="70%"/>\
-					<br/>\
-					<img onClick="reStart()" src="img/restart.png" alt="重新开始游戏" width="50%"/>\
-				</div>\
-				<header class="lw100 ldis_fle lpos_fix l10" style="height: 10%;justify-content: space-between;padding: 3% 0;top:0">\
-				<div onClick="Achang(0)" class="ldis_blo lbg_co_2 ltex_cen lpos_rel" style="width: 18%;height: 78%;border: 6px #bdae9a solid; border-radius: 6px;margin-left: 3%;">\
-			<img src="img/back.png" class="ldis_blo lpos_abs" style="right: 50%;top: 50%;margin-right: -20px;margin-top: -16px;" alt="返回" width="40px" height="32px"/>\
-		</div>\
-				</header>');
+									<div class="lpos_fix lw100 ltex_cen" style="top: 6%;line-height: 60px;">\
+										<img src="img/goodluck.png" alt="好运社" width="30%"/>\
+										<br/>\
+										<img src="img/win.png" alt="" width="40%"/>\
+										<br/>\
+										<img src="img/wintest.png" alt="" width="70%"/>\
+										<br/>\
+										<img onClick="reStart()" src="img/restart.png" alt="重新开始游戏" width="50%"/>\
+									</div>\
+									<header class="lw100 ldis_fle lpos_fix l10" style="height: 10%;justify-content: space-between;padding: 3% 0;top:0">\
+									<div onClick="Achang(0)" class="ldis_blo lbg_co_2 ltex_cen lpos_rel" style="width: 18%;height: 78%;border: 6px #bdae9a solid; border-radius: 6px;margin-left: 3%;">\
+								<img src="img/back.png" class="ldis_blo lpos_abs" style="right: 50%;top: 50%;margin-right: -20px;margin-top: -16px;" alt="返回" width="40px" height="32px"/>\
+							</div>\
+						</header>');
 		}
 		
+		if(c==400){
+			alert("貌似没有抽到卡，请再接再厉");
+			location.replace('index.html');
+		}
+
 		if(c==404){
-			selRaw(true,gcode);
+			//selRaw(true,gcode);
+			alert("貌似没有抽到卡，请再接再厉");
+			location.replace('index.html');
 		}
 	});
 		
 		
-		
-		
-		
-		//$.post('https://customer.imotstudio.net/yl2020NewYear/api/Game/ChouCard')
-		/*vice(0);
-		if(判断当日抽卡次数){//当单日抽卡次数达到上限时，胜利界面
-		   $("#end").html('<div class="lw100 lh100 lpos_fix lbg_co_black" style="opacity: 0.5;top: 0;"></div>\
-				<div class="lpos_fix lw100 ltex_cen" style="top: 6%;line-height: 60px;">\
-					<img src="img/goodluck.png" alt="好运社" width="30%"/>\
-					<br/>\
-					<img src="img/win.png" alt="" width="40%"/>\
-					<br/>\
-					<img src="img/wintext.png" alt="" width="70%"/>\
-					<br/>\
-					<img onClick="reStart()" src="img/restart.png" alt="重新开始游戏" width="50%"/>\
-				</div>\
-				<header class="lw100 ldis_fle lpos_fix l10" style="height: 10%;justify-content: space-between;padding: 3% 0;top:0">\
-				<a href="index.html" class="ldis_blo lbg_co_2 ltex_cen lpos_rel" style="width: 20%;height: 78%;border: 6px #bdae9a solid; border-radius: 6px;margin-left: 3%;">\
-					<img src="img/back.png" class="ldis_blo lpos_abs" style="right: 50%;top: 50%;margin-right: -25px;margin-top: -21px;" alt="返回" width="50px" height="42px"/>\
-				</a>\
-				</header>');
-		   }else{//胜利界面
-			var j=""//在这里写抽中哪张福卡
-			switch(j){
-				case 0:
-					getRaw(1)
-				break;
-				case 1:
-					getRaw(2)
-				break;
-				case 2:
-					getRaw(3)
-				break;
-				case 3:
-					getRaw(4)
-				break;
-				case 4:
-					getRaw(5)
-				break;
-				case 5:
-					getRaw(6)
-				break;
-			}
-		}*/
 	}else{
 		viceBG(1);
 		//失败界面

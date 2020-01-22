@@ -97,6 +97,7 @@
 	<section class="lw100 ltex_cen d3" style="height: %; margin-top: 0.8rem;">
 		<img src="img/submit.png" onClick="submit()" width="36%" alt="登录"/>
 	</section>
+	<div id="loading">请稍后...</div>
 	<script>
 		var u = navigator.userAgent;
 		var _isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
@@ -123,7 +124,7 @@
 			console.log(newUser);
 			
 		    var userData=JSON.parse(newUser);
-			
+			$("#loading").css('display','block');
 			$.post("https://customer.imotstudio.net/yl2020NewYear/api/Game/Register",{
 				  "OpenID": userData.Data.openid,
 				  "Name": name_val,
@@ -132,6 +133,7 @@
 				  "WeChatNickName": userData.Data.nickname,
 				  "HeadIMG": userData.Data.headimgurl
 			}).done(function(res){
+				$("#loading").css('display','none');
 				if(res.Code!=200){
 					alert(res.Message);
 				}else{
